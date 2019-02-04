@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669909}
   - component: {fileID: 534669906}
   - component: {fileID: 534669908}
   - component: {fileID: 534669907}
@@ -411,6 +412,26 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &534669909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8d76155f53cfc45b4f02922de468b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointOfFocus: {fileID: 1297679381}
+  _focusDistance: 10
+  _fNumber: 5.6
+  _useCameraFov: 1
+  _focalLength: 0.05
+  _kernelSize: 1
+  _visualize: 0
+  _shader: {fileID: 4800000, guid: b99c58356816f7b46818fe7e788b2fa1, type: 3}
 --- !u!1001 &817087339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510,6 +531,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.03169123, y: 0.021654485, z: 0.19207625}
   m_Center: {x: 0, y: 0.00059324957, z: -0.04778385}
+--- !u!4 &1297679381 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 030471b2c60ac264baefa0a0cf5c6f5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 817087339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!54 &1297679382
 Rigidbody:
   m_ObjectHideFlags: 0
