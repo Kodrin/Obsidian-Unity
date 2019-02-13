@@ -1,7 +1,3 @@
-# Obsidian-Unity
-Unity repository for obsidian
-
----
 
 # Using Reaktion
 
@@ -13,16 +9,3 @@ The plugin features scripts classified in 3 categories :
 - Gears : For manipulating objects
 
 ---
-
-# Compatibility
-
-Unity 2018.3.4f1
-
----
-
-# References
-
-Keijiro Takahashi/ DataMosh Shader ~ https://github.com/keijiro/KinoDatamosh
-Keijiro Takahashi/ Kino Bokeh ~ https://github.com/keijiro/KinoBokeh
-Keijiro Takahashi/ Reaktion ~ https://github.com/keijiro/Reaktion
-Ronja Shader/ Single step shader ~ https://www.ronja-tutorials.com/
