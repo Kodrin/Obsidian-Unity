@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using Windows.Kinect;
 
@@ -31,6 +32,7 @@ public class PointCloud : MonoBehaviour
     //point cloud mesh
     public GameObject _dotMesh;
     public GameObject[][] _pointCloudDots;
+    public GameObject[] _placeHolder;
     public int increment = 64;
 
     void Start()
@@ -72,6 +74,7 @@ public class PointCloud : MonoBehaviour
     void Update()
     {
 
+        //checks for managers
         if (_Sensor == null) return;
         if (MultiSourceManager == null) return;
 
@@ -86,8 +89,7 @@ public class PointCloud : MonoBehaviour
 
         for (int i = 0; i < cameraSpacePoints.Length; i++)
         {
-            if(Input.GetKeyDown("space"))
-                Debug.Log(cameraSpacePoints[i].X + "" + cameraSpacePoints[i].Y + "" + cameraSpacePoints[i].Z);
+
             // particles[i].position = new Vector3(cameraSpacePoints[i].X * scale, cameraSpacePoints[i].Y * scale, cameraSpacePoints[i].Z * scale);
             //particles[i].position = Random.insideUnitSphere * 10;
             // Debug.Log(cameraSpacePoints.Length);
@@ -103,15 +105,50 @@ public class PointCloud : MonoBehaviour
 
         StartCoroutine("Delay");
 
-        //debug
-        // if(Input.GetKeyDown("space"))
-        //     Debug.Log(cameraSpacePoints);
+        //parent and save on command 
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+            parentAndSave(_placeHolder);
 
+        //debug
+        if(Input.GetKeyDown("space"))
+            Debug.Log(cameraSpacePoints);
+
+    }
+
+    //parents the objects and saves them
+    public void parentAndSave(GameObject[] pointCloud){
+
+        //specify the local path where you want to save the prefab
+        string path = "Assets/Data" + gameObject.name + ".prefab";
+
+        //create an empty
+        GameObject emptyParent; 
+        emptyParent = new GameObject();
+
+        //parent to empty
+        for(int i = 0; i < pointCloud.Length; i++){
+            pointCloud[i].transform.SetParent(emptyParent.transform);
+        }
+
+        //save them to directory
+        if (AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)))
+            CreateNew(emptyParent, path);
+
+    }
+
+    //create prefab to specified local path 
+    static void CreateNew(GameObject obj, string localPath)
+    {
+        //Create a new Prefab at the path given
+        Object prefab = PrefabUtility.CreatePrefab(localPath, obj);
+        PrefabUtility.ReplacePrefab(obj, prefab, ReplacePrefabOptions.ConnectToPrefab);
     }
 
     private IEnumerator Delay() {
         yield return new WaitForSeconds(1.0f);
     }
+
+    //when the app quits
     void OnApplicationQuit()
     {
         if (_Mapper != null)
