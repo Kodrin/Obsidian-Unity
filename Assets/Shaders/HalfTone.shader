@@ -4,6 +4,7 @@
         [Header(Base Parameters)]
         _Color ("Tint", Color) = (0, 0, 0, 1)
         _MainTex ("Texture", 2D) = "white" {}
+        _Bump ("Bump Texture", 2D) = "bump" {}
         [HDR] _Emission ("Emission", color) = (0 ,0 ,0 , 1)
 
         [Header(Lighting Parameters)]
@@ -22,6 +23,7 @@
         #pragma target 3.0
 
         sampler2D _MainTex;
+        sampler2D _Bump;
         fixed4 _Color;
         half3 _Emission;
 
@@ -58,6 +60,7 @@
         //input struct which is automatically filled by unity
         struct Input {
             float2 uv_MainTex;
+            float2 uv_Bump;
         };
 
         //the surface shader function which sets parameters the lighting function then uses
@@ -68,6 +71,7 @@
             o.Albedo = col.rgb;
 
             o.Emission = _Emission;
+            o.Normal = UnpackNormal(tex2D(_Bump, i.uv_Bump));
         }
         ENDCG
     }
