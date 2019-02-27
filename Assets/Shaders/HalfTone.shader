@@ -5,10 +5,12 @@
         _Color ("Tint", Color) = (0, 0, 0, 1)
         _MainTex ("Texture", 2D) = "white" {}
         _Bump ("Bump Texture", 2D) = "bump" {}
+        _NormalIntensity ("Normal Intensity", Range (0,10)) = 1 // sliders
         [HDR] _Emission ("Emission", color) = (0 ,0 ,0 , 1)
 
         [Header(Lighting Parameters)]
         _ShadowTint ("Shadow Color", Color) = (0.5, 0.5, 0.5, 1)
+        _ShadowAtten ("Shadow Attenuation", Range (0,1.0)) = 0.5 // sliders
     }
     SubShader {
         //the material is completely non-transparent and is rendered at the same time as the other opaque geometry
@@ -24,9 +26,10 @@
 
         sampler2D _MainTex;
         sampler2D _Bump;
+        half _NormalIntensity;
         fixed4 _Color;
         half3 _Emission;
-
+        float _ShadowAtten;
         float3 _ShadowTint;
 
         //our lighting function. Will be called once per light
@@ -39,7 +42,7 @@
 
         #ifdef USING_DIRECTIONAL_LIGHT
             //for directional lights, get a hard vut in the middle of the shadow attenuation
-            float attenuationChange = fwidth(shadowAttenuation) * 0.5;
+            float attenuationChange = fwidth(shadowAttenuation) * _ShadowAtten;
             float shadow = smoothstep(0.5 - attenuationChange, 0.5 + attenuationChange, shadowAttenuation);
         #else
             //for other light types (point, spot), put the cutoff near black, so the falloff doesn't affect the range
@@ -61,7 +64,14 @@
         struct Input {
             float2 uv_MainTex;
             float2 uv_Bump;
+            float3 lightDir;
         };
+
+        void vert(inout appdata_full v, out Input o)
+            {
+                UNITY_INITIALIZE_OUTPUT(Input, o);
+                o.lightDir = WorldSpaceLightDir(v.vertex); // get the worldspace lighting direction
+            }
 
         //the surface shader function which sets parameters the lighting function then uses
         void surf (Input i, inout SurfaceOutput o) {
@@ -72,6 +82,7 @@
 
             o.Emission = _Emission;
             o.Normal = UnpackNormal(tex2D(_Bump, i.uv_Bump));
+            o.Normal *= float3(_NormalIntensity,_NormalIntensity,1);
         }
         ENDCG
     }
