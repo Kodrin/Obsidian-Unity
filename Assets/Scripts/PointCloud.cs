@@ -16,13 +16,11 @@ public class PointCloud : MonoBehaviour
     FrameDescription depthFrameDesc;
     CameraSpacePoint[] cameraSpacePoints;
 
+    [Header("Kinect Properties")]
     private int depthWidth;
     private int depthHeight;
-
-    [Header("Particle System")]
-    //particle system variables
-    ParticleSystem _particleSystem;
-    private ParticleSystem.Particle[] particles;
+    private Vector2Int _depthResolution = new Vector2Int(64,64);
+    public int _downSampling = 1;
 
     public Color color = Color.white;
     public float size = 0.2f;
@@ -31,9 +29,25 @@ public class PointCloud : MonoBehaviour
     [Header("PointCloud")]
     //point cloud mesh
     public GameObject _dotMesh;
-    public GameObject[][] _pointCloudDots;
+    public GameObject[] _pointCloudDots;
     public GameObject[] _placeHolder;
     public int increment = 64;
+
+    [Header("Cutoff Points")]
+    //cutoff points for downsampling
+    [Range(0,1.0f)]
+    public float _depthSensitivity = 1;
+    [Range(0,300f)]
+    public float _wallDepth = 100;
+
+    [Range(-1,1f)]
+    public float _topCutOff = 1;
+    [Range(-1,1f)]
+    public float _bottomCutOff = -1;
+    [Range(-1,1f)]
+    public float _leftCutOff = -1;
+    [Range(-1,1f)]
+    public float _rightCutOff = 1;
 
     void Start()
     {
@@ -53,19 +67,18 @@ public class PointCloud : MonoBehaviour
             }
 
             // particles = new ParticleSystem.Particle[depthWidth * depthHeight];
-            // _pointCloudDots = new _pointCloudDots[depthWidth * depthHeight];
+            _pointCloudDots = new GameObject[(_depthResolution.x/_downSampling) * (_depthResolution.y/_downSampling)];
             cameraSpacePoints = new CameraSpacePoint[depthWidth * depthHeight];
 
             //initialize the pointcloud
-            // for(int x = 0; x < depthWidth; x+=increment){
-            //     for(int y = 0; y < depthHeight; y+=increment){
-            //         _pointCloudDots[x][y] = new (GameObject)Instantiate(_dotMesh, gameObject.transform.position, gameObject.transform.rotation);
-            //     }
-            // }
+            for(int i = 0; i < _pointCloudDots.Length; i++){
+                _pointCloudDots[i] = (GameObject)Instantiate(_dotMesh, gameObject.transform.position, gameObject.transform.rotation);
+            }
 
             //debug
             Debug.Log("width" + depthWidth);
             Debug.Log("height" + depthHeight);
+            Debug.Log("pointCloudDotsLength" + _pointCloudDots.Length);
             Debug.Log("cameraSpacePoints" + cameraSpacePoints.Length);
         }
     }
@@ -87,20 +100,35 @@ public class PointCloud : MonoBehaviour
 
         _Mapper.MapDepthFrameToCameraSpace(rawdata, cameraSpacePoints);
 
-        for (int i = 0; i < cameraSpacePoints.Length; i++)
-        {
+        // for (int i = 0; i < cameraSpacePoints.Length; i++)
+        // {
+        //     // _pointCloudDots[i].transform.position = new Vector3(cameraSpacePoints[i].X * scale, cameraSpacePoints[i].Y * scale, cameraSpacePoints[i].Z * scale);
 
-            // particles[i].position = new Vector3(cameraSpacePoints[i].X * scale, cameraSpacePoints[i].Y * scale, cameraSpacePoints[i].Z * scale);
-            //particles[i].position = Random.insideUnitSphere * 10;
-            // Debug.Log(cameraSpacePoints.Length);
-            // particles[i].startColor = color;
-            // particles[i].startSize = size;
-            // if (rawdata[i] == 0) particles[i].startSize = 0;
+        //     // if (rawdata[i] == 0) _pointCloudDots[i].transform.localScale = new Vector3(0,0,0);
+
+
+        // }
+
+        //filter and downsample
+        for(int x = 0; x < _depthResolution.x/_downSampling; x++){
+            for(int y = 0; y < _depthResolution.y/_downSampling; y++){
+
+                //adjust 2d array to 1d
+                int sampleIndex = (y * (_depthResolution.x/_downSampling)) + x;
+                // sampleIndex *= _downSampling;
+
+                //get rid of the infinity error
+                if (_pointCloudDots[sampleIndex].transform.position.x > 100000000 || _pointCloudDots[sampleIndex].transform.position.x < 100000000)
+                    _pointCloudDots[sampleIndex].transform.position = new Vector3(0,0,0);
+
+                //set the positions based on z-threshold
+                if(cameraSpacePoints[sampleIndex].Z < _wallDepth)
+                    _pointCloudDots[sampleIndex].transform.position = new Vector3(cameraSpacePoints[sampleIndex].X * scale, cameraSpacePoints[sampleIndex].Y * scale, cameraSpacePoints[sampleIndex].Z * scale);
+
+                //debug
+                // Debug.Log("Z axis" + cameraSpacePoints[sampleIndex].Z);
+            }
         }
-
-        // _particleSystem = gameObject.GetComponent<ParticleSystem>();
-
-        // _particleSystem.SetParticles(particles, particles.Length);
 
 
         StartCoroutine("Delay");
