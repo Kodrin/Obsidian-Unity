@@ -17,3 +17,5 @@ Simple Depth Update/ Oliver Jones ~ https://stackoverflow.com/questions/37198974
 Keijiro Takahashi/ DataMosh Shader ~ https://github.com/keijiro/KinoDatamosh
 Keijiro Takahashi/ Kino Bokeh~ https://github.com/keijiro/KinoBokeh
 Ronja Shader/ Single step shader ~ https://www.ronja-tutorials.com/
+Serializing and saving ~ https://www.raywenderlich.com/418-how-to-save-and-load-a-game-in-unity
+Point Cloud rainbow ~ http://izmiz.hateblo.jp/entry/2017/12/30/003542
