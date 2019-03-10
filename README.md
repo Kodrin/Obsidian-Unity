@@ -1,8 +1,13 @@
 ### Obsidian ~ The human archive
 
-#### Ali Egseem - https://www.aliegseem.com/
-#### Codrin Tablan Negrei - http://www.miha-ko.ca/
-#### Valerie Bourdon - https://www.valeriebourdon.com/
+---
+
+### Authors
+
+- Ali Egseem - https://www.aliegseem.com/
+- Codrin Tablan Negrei - http://www.miha-ko.ca/
+- Valerie Bourdon - https://www.valeriebourdon.com/
+
 ---
 
 ### Compatibility

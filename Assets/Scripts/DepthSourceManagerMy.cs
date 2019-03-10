@@ -16,7 +16,7 @@ public class DepthSourceManagerMy : MonoBehaviour
 	private DepthFrameReader _Reader;
 	private ushort[] _Data;
 	private byte[] _RawData;
-	private Texture2D _Texture;
+	public Texture2D _Texture; //made it public so the PointCloudDuplicate.cs can access it
 
 	[SerializeField]
 	private Material mat;
