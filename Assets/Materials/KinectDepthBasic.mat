@@ -59,7 +59,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Displacement: 0.0327
+    - _Displacement: 0.0474
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -74,5 +74,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.13855219, a: 0.516}
+    - _Color: {r: 0.9622642, g: 0, b: 0, a: 0.516}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
