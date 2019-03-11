@@ -60,18 +60,18 @@ public class SaveData : MonoBehaviour
         }
 
         //save them to directory
-        if (AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)))
-            CreateNew(emptyParent, path);
+        // if (AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)))
+        //     CreateNew(emptyParent, path);
 
         //debug
         Debug.Log(path);
     }
 
     //create prefab to specified local path 
-    public void CreateNew(GameObject obj, string localPath)
-    {
-        //Create a new Prefab at the path given
-        Object prefab = PrefabUtility.CreateEmptyPrefab(localPath);
-        PrefabUtility.ReplacePrefab(obj, prefab, ReplacePrefabOptions.ConnectToPrefab);
-    }
+    // public void CreateNew(GameObject obj, string localPath)
+    // {
+    //     //Create a new Prefab at the path given
+    //     Object prefab = PrefabUtility.CreateEmptyPrefab(localPath);
+    //     PrefabUtility.ReplacePrefab(obj, prefab, ReplacePrefabOptions.ConnectToPrefab);
+    // }
 }

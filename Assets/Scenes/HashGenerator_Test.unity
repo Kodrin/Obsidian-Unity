@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _referenceToSubjectName: {fileID: 589288891}
-  _prefix: 0
+  _prefix: 000
 --- !u!4 &1144658985
 Transform:
   m_ObjectHideFlags: 0
