@@ -1,4 +1,4 @@
-﻿Shader "Hidden/KinectDepth"
+﻿Shader "Custom/KinectDepth"
 {
 
 Properties

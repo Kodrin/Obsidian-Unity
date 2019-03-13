@@ -33,3 +33,6 @@ Unity 2018.3.4f1
 - Minion Art/ Shader tutorial ~ https://www.patreon.com/minionsart
 - Serializing and saving ~ https://www.raywenderlich.com/418-how-to-save-and-load-a-game-in-unity 
 - Point Cloud rainbow ~ http://izmiz.hateblo.jp/entry/2017/12/30/003542
+
+### Notes
+- Unity returns the file path differently in editor vs build mode ~ https://answers.unity.com/questions/272486/cannot-read-or-write-a-txt-file-after-build.html

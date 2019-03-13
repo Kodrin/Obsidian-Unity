@@ -39,9 +39,9 @@ public class DepthSourceManagerMy : MonoBehaviour
 
 			// 16bit のテクスチャ。適切な単色のフォーマットがないので
 			// RGBA4444 or ARGB4444 or R16 で16bit分確保する
-			//_Texture = new Texture2D(frameDesc.Width, frameDesc.Height, TextureFormat.RGBA4444, false);
+			_Texture = new Texture2D(frameDesc.Width, frameDesc.Height, TextureFormat.RGBA4444, false);
 			//_Texture = new Texture2D(frameDesc.Width, frameDesc.Height, TextureFormat.ARGB4444, false);
-			_Texture = new Texture2D(frameDesc.Width, frameDesc.Height, TextureFormat.R16, false);
+			// _Texture = new Texture2D(frameDesc.Width, frameDesc.Height, TextureFormat.R16, false);
 
 			if (!_Sensor.IsOpen)
 			{
@@ -125,7 +125,12 @@ public class DepthSourceManagerMy : MonoBehaviour
 	//save png
 	public static void SaveTextureAsPNG(Texture2D _texture, string _fullPath, string _fileName)
 	 {
-	     byte[] _bytes =_texture.EncodeToPNG();
+	 	//creating the texture
+	 	// Texture2D tex = new Texture2D(512, 424, TextureFormat.RGB24, false);
+	 	// tex.ReadPixels(new Rect(0, 0, _texture.width, _texture.height), 0, 0, false);
+	 	// tex.Apply();
+	 	//encoding
+	     byte[] _bytes = _texture.EncodeToPNG();
 	     System.IO.File.WriteAllBytes(Application.dataPath + _fullPath + _fileName + ".png", _bytes);
 	     Debug.Log(_bytes.Length/1024  + "Kb was saved as: " + _fullPath);
 	 }
@@ -138,7 +143,7 @@ public class DepthSourceManagerMy : MonoBehaviour
 
 	 if (File.Exists(filePath))     {
 	     fileData = File.ReadAllBytes(filePath);
-	     tex = new Texture2D(2, 2);
+	     tex = new Texture2D(512, 424);
 	     tex.LoadImage(fileData); //..this will auto-resize the texture dimensions.
 	 }
 	 return tex;
