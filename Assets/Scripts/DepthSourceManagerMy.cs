@@ -84,12 +84,12 @@ public class DepthSourceManagerMy : MonoBehaviour
 		}
 
 		//debug
-		//save texture
-		if(Input.GetKeyDown(KeyCode.S) && doNotSetTexture != true)
-			SaveTextureAsPNG(_Texture, pathToTexture, pngFileName);
-		//capture
-		if(Input.GetKeyDown("space") && doNotSetTexture != true)
-			captureData(LoadPNG(Application.dataPath + pathToTexture + pngFileName + ".png"));
+		// //save texture
+		// if(Input.GetKeyDown(KeyCode.S) && doNotSetTexture != true)
+		// 	SaveTextureAsPNG(_Texture, pathToTexture, pngFileName);
+		// //capture
+		// if(Input.GetKeyDown("space") && doNotSetTexture != true)
+		// 	captureData(LoadPNG(Application.dataPath + pathToTexture + pngFileName + ".png"));
 	}
 
 	void OnApplicationQuit()
@@ -109,43 +109,5 @@ public class DepthSourceManagerMy : MonoBehaviour
 
 			_Sensor = null;
 		}
-	}
-
-	//debug and test
-	public void captureData(Texture2D loadedTexture){
-		//get components 
-		Renderer captMat = captureObject.GetComponent<Renderer>();
-		// captMat.material.SetTexture("_MainTex", _Texture);
-		captMat.material.SetTexture("_MainTex", loadedTexture);
-
-
-
-	}
-
-	//save png
-	public static void SaveTextureAsPNG(Texture2D _texture, string _fullPath, string _fileName)
-	 {
-	 	//creating the texture
-	 	// Texture2D tex = new Texture2D(512, 424, TextureFormat.RGB24, false);
-	 	// tex.ReadPixels(new Rect(0, 0, _texture.width, _texture.height), 0, 0, false);
-	 	// tex.Apply();
-	 	//encoding
-	     byte[] _bytes = _texture.EncodeToPNG();
-	     System.IO.File.WriteAllBytes(Application.dataPath + _fullPath + _fileName + ".png", _bytes);
-	     Debug.Log(_bytes.Length/1024  + "Kb was saved as: " + _fullPath);
-	 }
-
-	//load png
-	public static Texture2D LoadPNG(string filePath) {
-
-	 Texture2D tex = null;
-	 byte[] fileData;
-
-	 if (File.Exists(filePath))     {
-	     fileData = File.ReadAllBytes(filePath);
-	     tex = new Texture2D(512, 424);
-	     tex.LoadImage(fileData); //..this will auto-resize the texture dimensions.
-	 }
-	 return tex;
 	}
 }
