@@ -6,6 +6,8 @@
 		_Displacement("Displacement", Range(0, 0.1)) = 0.03
 		_Threshold("Threshold", Range(0,10)) = 10
 		_Color("Particle Color", Color) = (1,1,1,1)
+		_ColorBot("Gradient Color", Color) = (1,1,1,1)
+		_Middle ("Middle", Range(0.001, 0.999)) = 1
 	}
 	SubShader
 	{
@@ -58,9 +60,10 @@
 
 			sampler2D _MainTex;
 			float _Displacement;
-			fixed4 _Color;
 			float _Threshold;
-
+			fixed4 _Color;
+			fixed4 _ColorBot;
+			float _Middle;
 			float4 _MainTex_ST;
 
 
@@ -115,12 +118,13 @@
 				// テクスチャの色をそのまま使う
 				// fixed4 col = tex2D(_MainTex, i.uv);
 				// 指定の色にする場合
-				fixed4 col = _Color;
+				// fixed4 col = _Color; 
 				// fixed4 col = i.col;
 
 				//codrin debug
 				// UNITY_OUTPUT_DEPTH(i.depth);
-
+				fixed4 col = lerp(_Color, _ColorBot, i.uv.y / _Middle) * step(i.uv.y, _Middle);
+				col.a = 1;
 				return col;
 			}
 			ENDCG
