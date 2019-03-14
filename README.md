@@ -36,6 +36,8 @@ Unity 2018.3.4f1
 - Reading textures without ressource folder ~ https://answers.unity.com/questions/1225227/loading-textures-during-runtime-and-applying-to-ra.html
 - Getting a list of files in directory ~ https://answers.unity.com/questions/16433/get-list-of-all-files-in-a-directory.html
 -Creating folder/directory ~ https://answers.unity.com/questions/52401/creating-a-directory.html
+- Overlaying Objects with video textures ~ https://www.youtube.com/watch?v=KG2aq_CY7pU
+
 
 ### Notes
 - Unity returns the file path differently in editor vs build mode ~ https://answers.unity.com/questions/272486/cannot-read-or-write-a-txt-file-after-build.html

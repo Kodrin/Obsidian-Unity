@@ -253,7 +253,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a82d8daee5fc44ba002ce0a08679c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spacing: 5
+  _spacingX: 0
+  _spacingY: 0
+  _spacingIncrement: 48
   _horizontalIncrement: 5
   _pointCloudMuralPosition: {fileID: 918405453}
   _localPath: PointClouds
@@ -297,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918405453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.49, y: 10.74, z: -4.53}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -479,6 +481,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1536261262083541231, guid: 1da055f8516a9734f903638e4999137b,
+        type: 3}
+      propertyPath: m_Name
+      value: Cube
+      objectReference: {fileID: 0}
     - target: {fileID: 1536261262083541219, guid: 1da055f8516a9734f903638e4999137b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -533,11 +540,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1536261262083541231, guid: 1da055f8516a9734f903638e4999137b,
-        type: 3}
-      propertyPath: m_Name
-      value: Cube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1da055f8516a9734f903638e4999137b, type: 3}
