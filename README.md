@@ -33,6 +33,9 @@ Unity 2018.3.4f1
 - Minion Art/ Shader tutorial ~ https://www.patreon.com/minionsart
 - Serializing and saving ~ https://www.raywenderlich.com/418-how-to-save-and-load-a-game-in-unity 
 - Point Cloud rainbow ~ http://izmiz.hateblo.jp/entry/2017/12/30/003542
+- Reading textures without ressource folder ~ https://answers.unity.com/questions/1225227/loading-textures-during-runtime-and-applying-to-ra.html
+- Getting a list of files in directory ~ https://answers.unity.com/questions/16433/get-list-of-all-files-in-a-directory.html
+-Creating folder/directory ~ https://answers.unity.com/questions/52401/creating-a-directory.html
 
 ### Notes
 - Unity returns the file path differently in editor vs build mode ~ https://answers.unity.com/questions/272486/cannot-read-or-write-a-txt-file-after-build.html

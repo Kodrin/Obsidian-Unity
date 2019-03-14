@@ -17,7 +17,6 @@ public class PointCloudDataManager : MonoBehaviour
 	DepthSourceManagerMy depthManager;
 
 	[Header("Hash Parameters")]
-	public Text _referenceToSubjectName;
 	public string _prefix = "0";
 
 
@@ -33,12 +32,15 @@ public class PointCloudDataManager : MonoBehaviour
     void Update()
     {
         //DEBUG 
+        //create directory 
+        if(Input.GetKeyDown("d"))
+        	Directory.CreateDirectory(Application.dataPath);
 		//save texture
 		if(Input.GetKeyDown(KeyCode.S) && doNotSetTexture != true)
 			SaveTextureAsPNG(depthManager._Texture, GetHash(10));
 		//capture
 		if(Input.GetKeyDown("space") && doNotSetTexture != true)
-			captureData(LoadPNG(Application.dataPath + lastPngSaved + ".png"));
+			captureData(LoadPNG(Application.dataPath + "/" + lastPngSaved + ".png"));
     }
 
 
@@ -60,9 +62,10 @@ public class PointCloudDataManager : MonoBehaviour
 	 	// tex.Apply();
 	 	//encoding
 	     byte[] _bytes = _texture.EncodeToPNG();
-	     System.IO.File.WriteAllBytes(Application.dataPath + _fileName + ".png", _bytes);
+	     System.IO.File.WriteAllBytes(Application.dataPath + "/" + _fileName + ".png", _bytes);
 
 	     //DEBUG
+	     // Debug.Log( Application.dataPath );
 	     Debug.Log(_bytes.Length/1024  + "Kb was saved as: " + Application.dataPath + _fileName + ".png");
 	 }
 
@@ -83,7 +86,7 @@ public class PointCloudDataManager : MonoBehaviour
     //---------------------------------
     //HASH GENERATOR/ GET A UNIQUE AND RANDOM NAME
     public string GetHash(int length){
-    	string hash = _prefix + " o_"; //hash that is going to get returned
+    	string hash = _prefix; //hash that is going to get returned
     	string st = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     	int hashLength = length;
 
