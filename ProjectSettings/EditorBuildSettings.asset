@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/HashGenerator_Test.unity
     guid: 4a376b389c4a19e4ca9016a1d59638e5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PointCloud_Test.unity
     guid: 9294045102ef66e4cb2a659cabe8d027
+  - enabled: 1
+    path: Assets/Scenes/ParentingSaving_Test.unity
+    guid: e2bf290e3cc0cc3448703534c7228400
   m_configObjects: {}
