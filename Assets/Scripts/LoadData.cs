@@ -17,6 +17,7 @@ public class LoadData : MonoBehaviour
 	public int _horizontalIncrement; //starts a new row after x amount of point clouds
 	private UnityEngine.Object[] _loadedObjects; //preliminary loading of all the assets in the folder 
 	public GameObject _pointCloudMuralPosition; //use an empty and reference it here
+    public GameObject _pointCloudTemplate; //prefab of the point cloud
 	public string _localPath = "PointClouds";
 
     // Start is called before the first frame update
@@ -74,10 +75,11 @@ public class LoadData : MonoBehaviour
             Vector3 pointCloudPositionTest = new Vector3(_pointCloudMuralPosition.transform.position.x + _spacingX,_pointCloudMuralPosition.transform.position.y + _spacingY,_pointCloudMuralPosition.transform.position.z);
 
     		// Vector3 pointCloudPosition = new Vector3(_pointCloudMuralPosition.transform.position.x * rowCount,_pointCloudMuralPosition.transform.position.y * yModifier,_pointCloudMuralPosition.transform.position.z); //old code through multiplication
-    		PointClouds[i] = (GameObject)Instantiate(PointClouds[i],pointCloudPositionTest, _pointCloudMuralPosition.transform.rotation);
+    		PointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPositionTest, _pointCloudMuralPosition.transform.rotation);
 
             //SET THE MAT/TEXTURE/NAME FOR EACH ONE OF THEM
             //..........
+            // Renderer _pcRend = _pointCloudTemplate.GetComponent<Renderer>();
 
     		//start a new row based on the increment value
     		if(rowCount % _horizontalIncrement == 0){
