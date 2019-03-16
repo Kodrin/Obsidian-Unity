@@ -8,6 +8,7 @@
 		_Color("Particle Color", Color) = (1,1,1,1)
 		_ColorBot("Gradient Color", Color) = (1,1,1,1)
 		_Middle ("Middle", Range(0.001, 0.999)) = 1
+		_CutOutThresh("Clipping Plane", Range(0.0,1.0)) = 0.2
 	}
 	SubShader
 	{
@@ -64,6 +65,7 @@
 			fixed4 _Color;
 			fixed4 _ColorBot;
 			float _Middle;
+			float _CutOutThresh;
 			float4 _MainTex_ST;
 
 
@@ -116,15 +118,17 @@
 			fixed4 frag(v2f i) : SV_Target
 			{
 				// テクスチャの色をそのまま使う
-				// fixed4 col = tex2D(_MainTex, i.uv);
+				fixed4 col = tex2D(_MainTex, i.uv);
 				// 指定の色にする場合
 				// fixed4 col = _Color; 
 				// fixed4 col = i.col;
 
 				//codrin debug
 				// UNITY_OUTPUT_DEPTH(i.depth);
-				fixed4 col = lerp(_Color, _ColorBot, i.uv.y / _Middle) * step(i.uv.y, _Middle);
-				col.a = 1;
+				// fixed4 col = lerp(_Color, _ColorBot, i.uv.y / _Middle) * step(i.uv.y, _Middle);
+				col.a = 0.5;
+				//clipping the point cloud 
+				// clip(col.b - _CutOutThresh);
 				return col;
 			}
 			ENDCG

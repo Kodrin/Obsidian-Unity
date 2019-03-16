@@ -35,8 +35,10 @@ Unity 2018.3.4f1
 - Point Cloud rainbow ~ http://izmiz.hateblo.jp/entry/2017/12/30/003542
 - Reading textures without ressource folder ~ https://answers.unity.com/questions/1225227/loading-textures-during-runtime-and-applying-to-ra.html
 - Getting a list of files in directory ~ https://answers.unity.com/questions/16433/get-list-of-all-files-in-a-directory.html
--Creating folder/directory ~ https://answers.unity.com/questions/52401/creating-a-directory.html
+- Creating folder/directory ~ https://answers.unity.com/questions/52401/creating-a-directory.html
 - Overlaying Objects with video textures ~ https://www.youtube.com/watch?v=KG2aq_CY7pU
+- Create Materials at Runtime ~ https://answers.unity.com/questions/1242929/how-to-create-new-materials-at-runtime.html
+- Clipping shaders to ignore verteces ~ https://forum.unity.com/threads/stop-executing-the-pixel-shader-by-a-specified-vertex-distance-to-the-camera.532922/#post-3509802
 
 
 ### Notes
