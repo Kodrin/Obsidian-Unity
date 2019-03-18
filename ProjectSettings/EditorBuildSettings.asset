@@ -17,7 +17,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PointCloud_Test.unity
     guid: 9294045102ef66e4cb2a659cabe8d027
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ParentingSaving_Test.unity
     guid: e2bf290e3cc0cc3448703534c7228400
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: af862534119729246a7c651483801065
   m_configObjects: {}
