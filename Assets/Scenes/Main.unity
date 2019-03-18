@@ -398,12 +398,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDebugging: 0
-  _initialization: {fileID: 0}
+  _initialization: {fileID: 935226462}
   _initCamera: {fileID: 0}
-  _liveScanning: {fileID: 0}
+  _liveScanning: {fileID: 786557434}
   _liveScanningCamera: {fileID: 0}
-  _Obituary: {fileID: 0}
+  _Obituary: {fileID: 1096682175}
   _obituaryCamera: {fileID: 0}
+  _isOnInitializing: 0
+  _isOnLiveScanning: 0
+  _isOnObituary: 0
 --- !u!4 &182907416
 Transform:
   m_ObjectHideFlags: 0
@@ -448,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDebugging: 0
+  _worldManager: {fileID: 182907415}
   _handDistance: 0
 --- !u!4 &609370599
 Transform:
@@ -478,7 +482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &786557435
 Transform:
   m_ObjectHideFlags: 0
@@ -628,7 +632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1096682176
 Transform:
   m_ObjectHideFlags: 0

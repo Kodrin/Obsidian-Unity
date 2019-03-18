@@ -3,7 +3,14 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Are you debugging?")]
+    //are we debugging?
     public bool _isDebugging = false;
+
+    [Header("Reference to WorldManager")]
+    public WorldManager _worldManager;
+
+    [Header("Initialization Controls")]
     public float _handDistance = 15.0f;
     private float _inputHorizontal;
 
@@ -14,8 +21,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // grabs input in update loop for best accuracy
-        InitializationControls();
+        // inputs for the initialization phase
+        if(_worldManager._isOnInitializing)
+            InitializationControls();
     }
 
     private void InitializationControls()

@@ -19,14 +19,16 @@ public class WorldManager : MonoBehaviour
 	public GameObject _Obituary;
 	public Camera _obituaryCamera;
 	
-	// [Header("Resetting the experience if no one is there")]
-	//to be determined
-	// public float 
+	[Header("Which Sequence are we on?")]
+	public bool _isOnInitializing;
+	public bool _isOnLiveScanning;
+	public bool _isOnObituary;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //check which of the scenes is active at the moment to set booleans
+        CheckActiveScenes();
     }
 
     // Update is called once per frame
@@ -41,6 +43,13 @@ public class WorldManager : MonoBehaviour
     //when you are debugging
     private void Debugging(){
 
+    }
+
+    private void CheckActiveScenes(){
+    	//initialize the booleans
+    	_isOnInitializing = _initialization.activeSelf;
+    	_isOnLiveScanning = _liveScanning.activeSelf;
+    	_isOnObituary = _Obituary.activeSelf;
     }
 
     //Transition to the next phase
