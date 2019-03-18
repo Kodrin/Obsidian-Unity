@@ -59,11 +59,11 @@ namespace Kino
 
             EditorGUI.BeginDisabledGroup(!EditorApplication.isPlaying);
 
-            if (GUILayout.Button("Glitch!"))
-                foreach (Datamosh d in targets) d.Glitch(); 
+            // if (GUILayout.Button("Glitch!"))
+            foreach (Datamosh d in targets) d.Glitch(); 
 
-            if (GUILayout.Button("Clear"))
-                foreach (Datamosh d in targets) d.Reset();
+            // if (GUILayout.Button("Clear"))
+            //     foreach (Datamosh d in targets) d.Reset();
 
             EditorGUI.EndDisabledGroup ();
         }

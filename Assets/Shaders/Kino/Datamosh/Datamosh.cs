@@ -140,7 +140,7 @@ namespace Kino
             GetComponent<Camera>().depthTextureMode |=
                 DepthTextureMode.Depth | DepthTextureMode.MotionVectors;
 
-            _sequence = 0;
+            _sequence = 1; // ORIGINAL: 0 // SET TO 1 SO IT STARTS RIGHT AWAY
         }
 
         void OnDisable()

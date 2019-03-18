@@ -18,11 +18,6 @@ public class PlayerController : MonoBehaviour
         PlayerInput();
     }
 
-    void FixedUpdate()
-    {
-
-    }
-
     void PlayerInput()
     {
         if (BodySourceView.bodyTracked)

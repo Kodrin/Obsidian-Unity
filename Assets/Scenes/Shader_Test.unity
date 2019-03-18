@@ -779,7 +779,7 @@ MonoBehaviour:
   _entropy: 0.18
   _noiseContrast: 1.99
   _velocityScale: 0.8
-  _diffusion: 0.4
+  _diffusion: 1.87
   _shader: {fileID: 4800000, guid: 998cec7a45d274e3995fbccf2c4480bf, type: 3}
 --- !u!114 &534669907
 MonoBehaviour:
@@ -885,13 +885,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f1c55764ecdbca43be88c6ff54a5435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _filterType: 1
   _amplify: 20
+  _isDebugging: 1
+  _entropy: 0.86
+  _noiseContrast: 1.99
+  _dataMosh: {fileID: 534669906}
 --- !u!1 &633601140 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 3e262007f0b2f2e41ac17dd3389393a0,
