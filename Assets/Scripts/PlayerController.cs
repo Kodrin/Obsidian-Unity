@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // grabs input in update loop for best accuracy
-        PlayerInput();
+        InitializationControls();
     }
 
-    void PlayerInput()
+    private void InitializationControls()
     {
         if (BodySourceView.bodyTracked)
         {   

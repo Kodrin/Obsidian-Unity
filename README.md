@@ -29,6 +29,23 @@ Unity 2018.3.4f1
 
 ---
 
+### Software architecture
+
+Core Scripts:
+- Main.scene
+- WorldManager.cs
+- PlayerController.cs
+- DisplayScript.cs (multi-display)
+
+Tertiary Scripts:
+- ...
+- ...
+- ...
+- ...
+
+
+---
+
 ### References
 
 - Kinect API-Unity ~ https://docs.microsoft.com/en-us/previous-versions/windows/kinect/dn758543(v=ieb.10)
