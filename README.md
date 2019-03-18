@@ -14,6 +14,12 @@
 
 Unity 2018.3.4f1
 
+### Setup
+
+- Kinect V2
+- Kinect SDK package
+- Windows machine with 2 HDMI ports (Multi-Screen display with projectors)
+
 ### Branches
 
 - Master branch ~ Main/Shaders
