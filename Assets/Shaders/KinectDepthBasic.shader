@@ -118,15 +118,15 @@
 			fixed4 frag(v2f i) : SV_Target
 			{
 				// テクスチャの色をそのまま使う
-				fixed4 col = tex2D(_MainTex, i.uv);
+				// fixed4 col = tex2D(_MainTex, i.uv);
 				// 指定の色にする場合
 				// fixed4 col = _Color; 
 				// fixed4 col = i.col;
 
 				//codrin debug
 				// UNITY_OUTPUT_DEPTH(i.depth);
-				// fixed4 col = lerp(_Color, _ColorBot, i.uv.y / _Middle) * step(i.uv.y, _Middle);
-				col.a = 0.5;
+				fixed4 col = lerp(_Color, _ColorBot, i.uv.y / _Middle) * step(i.uv.y, _Middle);
+				col.a = 1;
 				//clipping the point cloud 
 				// clip(col.b - _CutOutThresh);
 				return col;
