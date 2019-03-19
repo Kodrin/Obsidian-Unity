@@ -4,11 +4,17 @@
 	{
 		_MainTex("Texture", 2D) = "white" {}
 		_Displacement("Displacement", Range(0, 0.1)) = 0.03
+		_Division("Division", Range (0, 6.9)) = 3.656
 		_Threshold("Threshold", Range(0,10)) = 10
 		_Color("Particle Color", Color) = (1,1,1,1)
 		_ColorBot("Gradient Color", Color) = (1,1,1,1)
 		_Middle ("Middle", Range(0.001, 0.999)) = 1
 		_CutOutThresh("Clipping Plane", Range(0.0,1.0)) = 0.2
+
+		_Distance("Distance", Float) = 1
+        _Amplitude("Amplitude", Float) = 1
+        _Speed ("Speed", Float) = 1
+        _Amount("Amount", Range(0.0,1.0)) = 1
 	}
 	SubShader
 	{
@@ -61,12 +67,18 @@
 
 			sampler2D _MainTex;
 			float _Displacement;
+			float _Division;
 			float _Threshold;
 			fixed4 _Color;
 			fixed4 _ColorBot;
 			float _Middle;
 			float _CutOutThresh;
 			float4 _MainTex_ST;
+
+            float _Distance;
+            float _Amplitude;
+            float _Speed;
+            float _Amount;
 
 
 			v2f vert(appdata v)
@@ -84,14 +96,18 @@
 
 				// デプスカメラ座標系から空間に展開する。
 				// C#の層でやるならCoordinateMapper.MapDepthFrameToCameraSpace を用いる
-				v.vertex.x = v.vertex.x * d / 3.656;
-				v.vertex.y = v.vertex.y * d / 3.656;
+				// v.vertex.x = v.vertex.x * d / 3.656;
+				// v.vertex.y = v.vertex.y * d / 3.656;
+				v.vertex.x = v.vertex.x * d / _Division;
+				v.vertex.y = v.vertex.y * d / _Division;
 				v.vertex.z = d ;
 				
 				//codrin
 				// v.vertex.xy = rand(v.vertex.xy);
 				if(v.vertex.z > _Threshold){
-					v.vertex.z = 50;
+					// v.vertex.z = 50;
+					//noise displace
+					v.vertex.z += sin(_Time.y * _Speed + v.vertex.y * _Amplitude) * _Distance * _Amount;
 				}
 
 				v2f o;
