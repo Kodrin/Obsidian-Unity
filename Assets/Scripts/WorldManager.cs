@@ -24,6 +24,11 @@ public class WorldManager : MonoBehaviour
 	public bool _isOnLiveScanning;
 	public bool _isOnObituary;
 
+	[Header("Is the sequence finished? True for yes")]
+	public bool _initializationIsFinished = false;
+	public bool _liveScanningIsFinished = false;
+	public bool _obituaryIsFinished = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +39,9 @@ public class WorldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //handle the scene transitions
+        SceneManager();
+
         //debug
         if(_isDebugging)
         	Debugging();
@@ -52,15 +59,36 @@ public class WorldManager : MonoBehaviour
     	_isOnObituary = _Obituary.activeSelf;
     }
 
+    private void SceneManager(){
+    	//if this scene is finished, proceed to the next one
+    	if(_initializationIsFinished){
+    		_initializationIsFinished = false; //reset the bool TRIGGER IS IN THE VIDEONTERMINAL.CS
+    		TransitionToNextPhase(_initialization, _initCamera, _liveScanning, _liveScanningCamera);
+    	}
+
+    	//if this scene is finished, proceed to the next one
+    	if(_liveScanningIsFinished){
+
+    	}
+
+    	//if this scene is finished, proceed to the next one
+    	if(_obituaryIsFinished){
+
+    	}
+
+    }
+
     //Transition to the next phase
     public void TransitionToNextPhase(GameObject currentScene, Camera currentCamera, GameObject nextScene, Camera nextCamera){
-    	//disable current scene and camera
-    	currentScene.SetActive(false);
-    	currentCamera.enabled = false;
 
     	//enable the next scene and camera
     	nextScene.SetActive(true);
     	nextCamera.enabled = true;
+
+    	//disable current scene and camera
+    	currentScene.SetActive(false);
+    	currentCamera.enabled = false;
+
     }
 
 }

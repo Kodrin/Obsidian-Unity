@@ -8,9 +8,11 @@ public class VideoOnTerminal : MonoBehaviour {
     
     //skeleton reference
     public PlayerController _skeleton;
+    public WorldManager _worldManager;
     public float _initThreshold = 2.0f;
     public float _handTimer = 0;
     private bool _hasChangedVideo = false;
+    private bool _isReadyToInit = false;
 
     //list of video clips
     public VideoClip _idle;
@@ -51,6 +53,12 @@ public class VideoOnTerminal : MonoBehaviour {
     {
         yield return new WaitForSeconds(lengthOfVideo);
         _hasChangedVideo = false;
+
+        //if the experience is ready to initialize, init it!
+        if(_isReadyToInit){
+            _isReadyToInit = false; //reset bool
+            _worldManager._initializationIsFinished = true; //INITIALIZE OBSIDIAN
+        }
      }
 
     //init obsidian animation transition
@@ -81,7 +89,8 @@ public class VideoOnTerminal : MonoBehaviour {
 
             if(_handTimer > 5.0f && !_hasChangedVideo){
                 ChangeVideo(_initializing);
-                
+                _handTimer = 0; //reset timer
+                _isReadyToInit = true; //THE EXPERIENCE IS READY TO INITIALIZE
             }
 
         } else if(BodySourceView.bodyTracked && !_hasChangedVideo){

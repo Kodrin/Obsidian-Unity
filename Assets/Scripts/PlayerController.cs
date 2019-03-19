@@ -24,8 +24,17 @@ public class PlayerController : MonoBehaviour
         // inputs for the initialization phase
         if(_worldManager._isOnInitializing)
             InitializationControls();
+
+        //inputs for the live point cloud phase
+        if(_worldManager._isOnLiveScanning)
+            LivePointCloudControls();
+
+        //inputs for the obituary phase
+        if(_worldManager._isOnObituary)
+            ObituaryControls();
     }
 
+    //controls for the pre-rendered init animations (to initiate the experience)
     private void InitializationControls()
     {
         if (BodySourceView.bodyTracked)
@@ -51,6 +60,16 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Input Horizontal" + _inputHorizontal);
             }
         }
+    }
+
+    //controls to navigate the point cloud
+    private void LivePointCloudControls(){
+
+    }
+
+    //controls to navigate the obituary
+    private void ObituaryControls(){
+
     }
 
 }
