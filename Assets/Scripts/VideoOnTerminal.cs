@@ -10,7 +10,8 @@ public class VideoOnTerminal : MonoBehaviour {
     public PlayerController _skeleton;
     public WorldManager _worldManager;
     public float _initThreshold = 2.0f;
-    public float _handTimer = 0;
+    public float _poseHoldThreshold = 2.5f;
+    private float _poseHoldTimer = 0;
     private bool _hasChangedVideo = false;
     private bool _isReadyToInit = false;
 
@@ -83,13 +84,13 @@ public class VideoOnTerminal : MonoBehaviour {
             ChangeVideo(_idle);
 
         //plays the initializes anim after the partipant holds his hands together for 5 seconds
-        if(_skeleton._handDistance < _initThreshold && BodySourceView.bodyTracked == true){
+        if(_skeleton._elbowLToHead < _initThreshold && _skeleton._elbowRToHead < _initThreshold &&BodySourceView.bodyTracked == true){
             //increase the timer
-            _handTimer += Time.deltaTime;
+            _poseHoldTimer += Time.deltaTime;
 
-            if(_handTimer > 5.0f && !_hasChangedVideo){
+            if(_poseHoldTimer > _poseHoldThreshold && !_hasChangedVideo){
                 ChangeVideo(_initializing);
-                _handTimer = 0; //reset timer
+                _poseHoldTimer = 0; //reset timer
                 _isReadyToInit = true; //THE EXPERIENCE IS READY TO INITIALIZE
             }
 

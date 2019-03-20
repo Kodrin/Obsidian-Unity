@@ -62,6 +62,8 @@ Tertiary Scripts:
 - Overlaying Objects with video textures ~ https://www.youtube.com/watch?v=KG2aq_CY7pU
 - Create Materials at Runtime ~ https://answers.unity.com/questions/1242929/how-to-create-new-materials-at-runtime.html
 - Clipping shaders to ignore verteces ~ https://forum.unity.com/threads/stop-executing-the-pixel-shader-by-a-specified-vertex-distance-to-the-camera.532922/#post-3509802
+- Vertex Displacement shaders ~ https://www.jordanstevenstechart.com/vertex-displacement
+- Kinect joint ID ~ https://medium.com/@lisajamhoury/understanding-kinect-v2-joints-and-coordinate-system-4f4b90b9df16
 
 
 ### Notes

@@ -11,18 +11,21 @@ public class PlayerController : MonoBehaviour
     public WorldManager _worldManager;
 
     [Header("Initialization Controls")]
-    public float _handDistance = 15.0f;
+    public float _handDistance = 15.0f; //distance between the 2 hands
+    public float _elbowLToHead; //distance fron left elbow to head 
+    public float _elbowRToHead;
     private float _inputHorizontal;
 
     void Start()
     {
-
+        // if(_isDebugging)
+        //     GetListOfBones();
     }
 
     void Update()
     {
         // inputs for the initialization phase
-        if(_worldManager._isOnInitializing)
+        if(_worldManager._isOnInitializing || _isDebugging)
             InitializationControls();
 
         //inputs for the live point cloud phase
@@ -44,8 +47,19 @@ public class PlayerController : MonoBehaviour
             Vector3 handLeft = BodySourceView.jointObjs[7].position;
             Vector3 handRight = BodySourceView.jointObjs[11].position;
 
+            //fetch head position
+            Vector3 head = BodySourceView.jointObjs[3].position;
+
+            //fetch elbow positions
+            Vector3 elbowLeft = BodySourceView.jointObjs[5].position;
+            Vector3 elbowRight = BodySourceView.jointObjs[9].position;
+
             //calculate hand distance
             _handDistance = Vector3.Distance(handLeft,handRight);
+
+            //calculate the elbow distance to the head
+            _elbowLToHead = Vector3.Distance(elbowLeft,head);
+            _elbowRToHead = Vector3.Distance(elbowRight,head);
 
             // calc angle of hands
             float angle = Mathf.Atan2(handRight.y - handLeft.y, handRight.x - handLeft.x) * Mathf.Rad2Deg;
@@ -55,7 +69,11 @@ public class PlayerController : MonoBehaviour
 
             //debug
             if(_isDebugging){
+
                 Debug.Log("hand distance" + _handDistance);
+                Debug.Log("elbow L distance" + _elbowLToHead);
+                Debug.Log("elbow R distance" + _elbowRToHead);
+
                 Debug.Log("Angle" + angle);
                 Debug.Log("Input Horizontal" + _inputHorizontal);
             }
@@ -70,6 +88,13 @@ public class PlayerController : MonoBehaviour
     //controls to navigate the obituary
     private void ObituaryControls(){
 
+    }
+
+    private void GetListOfBones(){
+                //get list of bones
+        for(int i = 0; i < BodySourceView.jointObjs.Length; i++){
+            Debug.Log(BodySourceView.jointObjs[i].name);
+        }
     }
 
 }
