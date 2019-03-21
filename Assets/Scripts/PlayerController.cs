@@ -10,11 +10,15 @@ public class PlayerController : MonoBehaviour
     [Header("Reference to WorldManager")]
     public WorldManager _worldManager;
 
-    [Header("Initialization Controls")]
+    [Header("Controls")]
     public float _handDistance = 15.0f; //distance between the 2 hands
     public float _elbowLToHead; //distance fron left elbow to head 
     public float _elbowRToHead;
     private float _inputHorizontal;
+
+    [Header("Timers")]
+    private float _participantHasExitedTimer = 0;
+    public float _participantHasExitedThreshold = 5.0f;
 
     void Start()
     {
@@ -83,6 +87,16 @@ public class PlayerController : MonoBehaviour
     //controls to navigate the point cloud
     private void LivePointCloudControls(){
 
+        //if the participant is not detected anymore, proceed to the obituary
+        if (!BodySourceView.bodyTracked){
+            //timer 
+            _participantHasExitedTimer += Time.deltaTime;
+            //if the timer exceed the threshold, then the participant has left the scene and we can initiate the obituary
+            if(_participantHasExitedTimer > _participantHasExitedThreshold){
+                _participantHasExitedTimer = 0; 
+                _worldManager._liveScanningIsFinished = true;   //TRIGGER THE OBITUARY
+            }
+        }
     }
 
     //controls to navigate the obituary

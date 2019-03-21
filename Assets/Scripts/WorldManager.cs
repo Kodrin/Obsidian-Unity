@@ -16,7 +16,7 @@ public class WorldManager : MonoBehaviour
 	public Camera _initCamera;
 	public GameObject _liveScanning;
 	public Camera _liveScanningCamera;
-	public GameObject _Obituary;
+	public GameObject _obituary;
 	public Camera _obituaryCamera;
 	
 	[Header("Which Sequence are we on?")]
@@ -32,13 +32,16 @@ public class WorldManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //check which of the scenes is active at the moment to set booleans
-        CheckActiveScenes();
+        // //check which of the scenes is active at the moment to set booleans
+        // CheckActiveScenes();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //check which of the scenes is active at the moment to set booleans
+        CheckActiveScenes();
+
         //handle the scene transitions
         SceneManager();
 
@@ -56,7 +59,7 @@ public class WorldManager : MonoBehaviour
     	//initialize the booleans
     	_isOnInitializing = _initialization.activeSelf;
     	_isOnLiveScanning = _liveScanning.activeSelf;
-    	_isOnObituary = _Obituary.activeSelf;
+    	_isOnObituary = _obituary.activeSelf;
     }
 
     private void SceneManager(){
@@ -68,12 +71,14 @@ public class WorldManager : MonoBehaviour
 
     	//if this scene is finished, proceed to the next one
     	if(_liveScanningIsFinished){
-
+            _liveScanningIsFinished = false;
+            TransitionToNextPhase(_liveScanning, _liveScanningCamera, _obituary, _obituaryCamera); // TRIGGER IS IN THE PLAYERCONTROLLER.CS
     	}
 
     	//if this scene is finished, proceed to the next one
     	if(_obituaryIsFinished){
-
+            _obituaryIsFinished = false;
+            TransitionToNextPhase( _obituary, _obituaryCamera,_initialization, _initCamera);
     	}
 
     }
