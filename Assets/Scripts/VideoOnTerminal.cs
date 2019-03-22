@@ -14,11 +14,12 @@ public class VideoOnTerminal : MonoBehaviour {
     private float _poseHoldTimer = 0;
     private bool _hasChangedVideo = false;
     private bool _isReadyToInit = false;
+    private bool _animReset;
 
     //list of video clips
     public VideoClip _idle;
-    public VideoClip _tracking;
     public VideoClip _initializing;
+    public VideoClip _putYourHandsUp;
 
     //Video variable references
     public RawImage rawImage;
@@ -63,11 +64,21 @@ public class VideoOnTerminal : MonoBehaviour {
      }
 
     //init obsidian animation transition
-    public void ChangeVideo(VideoClip nextVideo)
+    public void ChangeVideo(VideoClip nextVideo, bool Looping)
     {
+        //switch the video
         videoPlayer.clip = nextVideo;
-        videoPlayer.Play();
-        audioSource.Play();
+
+        //do you want it to loop
+        if(Looping){
+            videoPlayer.isLooping = true;
+        } else {
+            videoPlayer.isLooping = false;
+            videoPlayer.Play();
+        }
+
+        // videoPlayer.Play();
+        // audioSource.Play();
 
         //has changed video
         _hasChangedVideo = true;
@@ -79,23 +90,36 @@ public class VideoOnTerminal : MonoBehaviour {
 
     //Handles the idle/tracking/initiate of the experience
     public void InitializeObsidian(){
-        //if your body is not tracked, then play the idle anima
-        if(!BodySourceView.bodyTracked && !_hasChangedVideo)
-            ChangeVideo(_idle);
 
-        //plays the initializes anim after the partipant holds his hands together for 5 seconds
+        //if your body is not tracked, then play the idle anima
+        if(!BodySourceView.bodyTracked && !_hasChangedVideo){
+            ChangeVideo(_idle, true);
+            _animReset = true;
+        }
+
+        // TRANSITION TO LIVE SCANNING IF YOU PUT YOUR HANDS UP IN THE AIR
         if(_skeleton._elbowLToHead < _initThreshold && _skeleton._elbowRToHead < _initThreshold &&BodySourceView.bodyTracked == true){
-            //increase the timer
+            
+            //TIMER FOR HOW LONG IN THE AIR UR HANDS SHOULD BE
             _poseHoldTimer += Time.deltaTime;
 
             if(_poseHoldTimer > _poseHoldThreshold && !_hasChangedVideo){
-                ChangeVideo(_initializing);
+                // ChangeVideo(_putYourHandsUp, true);
                 _poseHoldTimer = 0; //reset timer
                 _isReadyToInit = true; //THE EXPERIENCE IS READY TO INITIALIZE
             }
 
         } else if(BodySourceView.bodyTracked && !_hasChangedVideo){
-            ChangeVideo(_tracking);
+
+            // BOOL TO PLAY VIDEO PLAYER ONE SHOT
+            if(_animReset){
+                _animReset = false;
+                ChangeVideo(_initializing, false);
+            }
+
+            // PUT YOUR HANDS UP ANIM
+            if(!_hasChangedVideo)
+                ChangeVideo(_putYourHandsUp, true);
         }
     }
 }

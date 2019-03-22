@@ -323,6 +323,11 @@ PrefabInstance:
       propertyPath: m_AspectRatio
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1556170007771205329, guid: cda79bf2655dd9645b7e2f7b95853e23,
+        type: 3}
+      propertyPath: m_Looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1556170007771205328, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: m_Enabled
@@ -337,7 +342,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _initializing
       value: 
-      objectReference: {fileID: 32900000, guid: 7436ae6b4723bda40ae354a60d6c2e20,
+      objectReference: {fileID: 32900000, guid: 2ae619cc4cdef854ea90cf21444dfe6b,
         type: 3}
     - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
@@ -371,6 +376,12 @@ PrefabInstance:
       propertyPath: _poseHoldThreshold
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
+        type: 3}
+      propertyPath: _putYourHandsUp
+      value: 
+      objectReference: {fileID: 32900000, guid: 7436ae6b4723bda40ae354a60d6c2e20,
+        type: 3}
     - target: {fileID: 1556170009117724267, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: m_Mesh
@@ -380,6 +391,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.088
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556170007771205331, guid: cda79bf2655dd9645b7e2f7b95853e23,
+        type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cda79bf2655dd9645b7e2f7b95853e23, type: 3}
@@ -1712,6 +1728,11 @@ PrefabInstance:
       propertyPath: m_AspectRatio
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1556170007771205329, guid: cda79bf2655dd9645b7e2f7b95853e23,
+        type: 3}
+      propertyPath: m_Looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1556170007771205328, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: m_Enabled
@@ -1726,7 +1747,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _initializing
       value: 
-      objectReference: {fileID: 32900000, guid: 7436ae6b4723bda40ae354a60d6c2e20,
+      objectReference: {fileID: 32900000, guid: 470c6b4747eed324fa541f1a35dcb5d3,
         type: 3}
     - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
@@ -1744,6 +1765,12 @@ PrefabInstance:
       propertyPath: _tracking
       value: 
       objectReference: {fileID: 32900000, guid: 470c6b4747eed324fa541f1a35dcb5d3,
+        type: 3}
+    - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
+        type: 3}
+      propertyPath: _putYourHandsUp
+      value: 
+      objectReference: {fileID: 32900000, guid: ce384400244117243bbde7abfdddab29,
         type: 3}
     - target: {fileID: 1556170009117724267, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
