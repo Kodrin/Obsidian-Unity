@@ -65,6 +65,7 @@ Tertiary Scripts:
 - Vertex Displacement shaders ~ https://www.jordanstevenstechart.com/vertex-displacement
 - Kinect joint ID ~ https://medium.com/@lisajamhoury/understanding-kinect-v2-joints-and-coordinate-system-4f4b90b9df16
 - VHS shader ~ http://www.shaderslab.com/demo-38---vhs-tape-effect.html
+- Casting unity.object[] to texture2d ~ https://answers.unity.com/questions/15446/converting-unityengineobject-to-unityenginetexture.html
 
 ### Notes
 - Unity returns the file path differently in editor vs build mode ~ https://answers.unity.com/questions/272486/cannot-read-or-write-a-txt-file-after-build.html

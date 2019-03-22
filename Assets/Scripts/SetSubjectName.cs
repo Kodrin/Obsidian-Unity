@@ -5,17 +5,21 @@ using UnityEngine;
 public class SetSubjectName : MonoBehaviour
 {
 	//component 
-	TextMesh _txtMesh;
+    [Header("Naming Properties")]
+    // public string _subjectName; 
+	public TextMesh _txtMesh;
 
     // Start is called before the first frame update
     void Start()
     {
-    	//fetch the text mesh
-    	_txtMesh = gameObject.GetComponent<TextMesh>();
 		//fetch the parent
-    	_txtMesh.text = gameObject.transform.parent.name;
+    	// _txtMesh.text = _subjectName;
     	//debug
     	// Debug.Log(gameObject.transform.parent.name);
+    }
+
+    public void SetName(string _subjectName){
+       _txtMesh.text = _subjectName; 
     }
 
 }

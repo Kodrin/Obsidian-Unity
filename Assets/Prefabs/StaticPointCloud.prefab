@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5337009131841298047}
   - component: {fileID: 5337009131841298046}
   - component: {fileID: 5337009131841298045}
-  - component: {fileID: 5309588596405947318}
   m_Layer: 0
   m_Name: SubjectName
   m_TagString: Untagged
@@ -50,7 +49,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f11476032507a344be15025e5045c3b, type: 3}
+  - {fileID: 2100000, guid: 47a525c94919dd84cbbbb79dd81b2fa0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,7 +77,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5337009131841298044}
-  m_Text: Hello World
+  m_Text: o_Mba08s6G2W
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -88,22 +87,10 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: 0f11476032507a344be15025e5045c3b, type: 3}
+  m_Font: {fileID: 12800000, guid: 47a525c94919dd84cbbbb79dd81b2fa0, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
---- !u!114 &5309588596405947318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5337009131841298044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f485c1062c1bc3f4a9cb601b1e0e61b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5337009132013202376
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,9 +104,9 @@ GameObject:
   - component: {fileID: 5337009132013202378}
   - component: {fileID: 5337009132013202377}
   - component: {fileID: 5337009132013202421}
-  - component: {fileID: 5337009132013202422}
+  - component: {fileID: 4886083814400825349}
   m_Layer: 0
-  m_Name: ScannedPointCloud
+  m_Name: StaticPointCloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,14 +119,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5337009132013202376}
-  m_LocalRotation: {x: -0.70710576, y: -0, z: 0.70710784, w: 0}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5337009131841298047}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 180.00002}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 180}
 --- !u!33 &5337009132013202379
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -165,7 +152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4767969f398620c43bf2ce3077b22012, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -213,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe72f45387f92134582c9c1d9784bfc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5337009132013202422
+--- !u!114 &4886083814400825349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,12 +209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5337009132013202376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3da132761a4b53f45ae1cb001b482a08, type: 3}
+  m_Script: {fileID: 11500000, guid: f485c1062c1bc3f4a9cb601b1e0e61b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  captureObject: {fileID: 0}
-  pathToTexture: 
-  pngFileName: 
-  doNotSetTexture: 1
-  _Texture: {fileID: 0}
-  mat: {fileID: 2100000, guid: 4767969f398620c43bf2ce3077b22012, type: 2}
+  _txtMesh: {fileID: 5337009131841298045}

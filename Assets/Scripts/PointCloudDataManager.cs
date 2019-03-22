@@ -73,7 +73,7 @@ public class PointCloudDataManager : MonoBehaviour
 
 	     //DEBUG
 	     // Debug.Log( Application.dataPath );
-	     Debug.Log(_bytes.Length/1024  + "Kb was saved as: " + Application.dataPath + _fileName + ".png");
+	    Debug.Log(_bytes.Length/1024  + "Kb was saved as: " + Application.dataPath + _fileName + ".png");
 	 }
 
 	//LOAD PNG
