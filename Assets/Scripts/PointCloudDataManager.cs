@@ -7,6 +7,10 @@ using System.IO;
 
 public class PointCloudDataManager : MonoBehaviour
 {
+	[Header("Am I debugging?")]
+	public bool _isDebugging = false;
+
+
 	[Header("Capture Point Cloud")]
 	public GameObject captureObject;
 	public GameObject livepointCloudFeed;
@@ -31,16 +35,19 @@ public class PointCloudDataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //DEBUG 
-        //create directory 
-        if(Input.GetKeyDown("d"))
-        	Directory.CreateDirectory(Application.dataPath);
-		//save texture
-		if(Input.GetKeyDown(KeyCode.S) && doNotSetTexture != true)
-			SaveTextureAsPNG(depthManager._Texture, GetHash(10));
-		//capture
-		if(Input.GetKeyDown("space") && doNotSetTexture != true)
-			captureData(LoadPNG(Application.dataPath + "/" + lastPngSaved + ".png"));
+
+        //DEBUG
+        if(_isDebugging){ 
+	        //create directory 
+	        if(Input.GetKeyDown("d"))
+	        	Directory.CreateDirectory(Application.dataPath);
+			//save texture
+			if(Input.GetKeyDown(KeyCode.S) && doNotSetTexture != true)
+				SaveTextureAsPNG(depthManager._Texture, GetHash(10));
+			//capture
+			if(Input.GetKeyDown("space") && doNotSetTexture != true)
+				captureData(LoadPNG(Application.dataPath + "/" + lastPngSaved + ".png"));
+		}
     }
 
 

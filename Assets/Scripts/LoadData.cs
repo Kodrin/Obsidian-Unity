@@ -8,6 +8,9 @@ using System.IO;
 
 public class LoadData : MonoBehaviour
 {
+	[Header("Am I debugging?")]
+	public bool _isDebugging = false;
+
 
 	[Header("Placement Properties")]
 
@@ -30,11 +33,14 @@ public class LoadData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //debug
-        if(Input.GetKeyDown("f"))
-            GetDirectoryInfo();
-    	if(Input.GetKeyDown("space"))
-        	PlacePointClouds(_loadedObjects);
+    	
+        //DEBUG
+        if(_isDebugging){
+	        if(Input.GetKeyDown("f"))
+	            GetDirectoryInfo();
+	    	if(Input.GetKeyDown("space"))
+	        	PlacePointClouds(_loadedObjects);
+        }
     }
 
     //get a list in the directory
@@ -52,7 +58,7 @@ public class LoadData : MonoBehaviour
 
     //load object from folder using ressource folder
     public void LoadObjectsFromDataFolder(string path){
-    	_loadedObjects = Resources.LoadAll(path, typeof(GameObject));
+    	_loadedObjects = Resources.LoadAll(path, typeof(Texture2D));
 
     	foreach(var pointCloud in _loadedObjects){
 
