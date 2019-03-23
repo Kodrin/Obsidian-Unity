@@ -87,6 +87,21 @@ public class PlayerController : MonoBehaviour
     //controls to navigate the point cloud
     private void LivePointCloudControls(){
 
+        if(BodySourceView.bodyTracked){
+             // fetch hand positions
+            Vector3 handLeft = BodySourceView.jointObjs[7].position;
+            Vector3 handRight = BodySourceView.jointObjs[11].position;
+
+            //calculate hand distance
+            _handDistance = Vector3.Distance(handLeft,handRight);
+
+            // calc angle of hands
+            float angle = Mathf.Atan2(handRight.y - handLeft.y, handRight.x - handLeft.x) * Mathf.Rad2Deg;
+
+            // convert angle rotation to movement values
+            _inputHorizontal = Mathf.Lerp(1.0f, -1.0f, Mathf.InverseLerp(-45.0f, 45.0f, angle));           
+        }
+
         //if the participant is not detected anymore, proceed to the obituary
         if (!BodySourceView.bodyTracked){
             //timer 

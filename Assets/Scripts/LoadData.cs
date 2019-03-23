@@ -27,7 +27,7 @@ public class LoadData : MonoBehaviour
 
 	private UnityEngine.Object[] _loadedObjects; //preliminary loading of all the assets in the folder 
 	private Texture2D[] _loadedTextures; //to store all the loaded objects
-	
+
 	[Header("Shader Properties")]
 	public Shader _assignedShader;
 
@@ -83,24 +83,27 @@ public class LoadData : MonoBehaviour
     	int rowCount = 1;
     	int yModifier = 1;
 
+    	// bool alternatePosition = false;
+
     	//place those point clouds into a mural
     	for(int i = 0; i < PointCloudsTextures.Length; i++){
     		//set parent to gameobject
     		// PointClouds[i].transform.SetParent(_pointCloudMuralPosition.transform);
 
     		//instantiate those point clouds 
-            Vector3 pointCloudPositionTest = new Vector3(_pointCloudMuralPosition.transform.position.x + _spacingX,_pointCloudMuralPosition.transform.position.y + _spacingY,_pointCloudMuralPosition.transform.position.z);
+            Vector3 pointCloudPosition = new Vector3(_pointCloudMuralPosition.transform.position.x + _spacingX,_pointCloudMuralPosition.transform.position.y + _spacingY,_pointCloudMuralPosition.transform.position.z);
+            // Vector3 pointCloudPositionInverted = new Vector3();
 
     		// Vector3 pointCloudPosition = new Vector3(_pointCloudMuralPosition.transform.position.x * rowCount,_pointCloudMuralPosition.transform.position.y * yModifier,_pointCloudMuralPosition.transform.position.z); //old code through multiplication
-    		_pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPositionTest, _pointCloudMuralPosition.transform.rotation);
+    		_pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPosition, _pointCloudMuralPosition.transform.rotation);
 
             //SET THE MAT/TEXTURE/NAME FOR EACH ONE OF THEM
             //..........
-            SetSubjectName _setSubjName = _pointCloudTemplate.GetComponent<SetSubjectName>();
+            SetSubjectName _setSubjName = _pointClouds[i].GetComponent<SetSubjectName>();
             _setSubjName.SetName(GetHash(10));
-            Renderer _pcRend = _pointCloudTemplate.GetComponent<Renderer>(); //fetch the renderer to assign material
-            _pcRend.sharedMaterial = new Material(_assignedShader);
-            _pcRend.sharedMaterial.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
+            Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); //fetch the renderer to assign material
+            _pcRend.material = new Material(_assignedShader);
+            _pcRend.material.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
 
     		//start a new row based on the increment value
     		if(rowCount % _horizontalIncrement == 0){
