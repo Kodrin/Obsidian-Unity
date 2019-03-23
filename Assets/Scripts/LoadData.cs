@@ -18,8 +18,10 @@ public class LoadData : MonoBehaviour
     public int _spacingY;
     public int _spacingIncrement = 5; 
 	public int _horizontalIncrement; //starts a new row after x amount of point clouds
+	public int _invertedIncrement = 15; //point at which the mural inverts
 
 	public GameObject _pointCloudMuralPosition; //use an empty and reference it here
+	public GameObject _pointCloudMuralPositionInverted; //use an empty and reference it here
     public GameObject _pointCloudTemplate; //prefab of the point cloud
     public GameObject[] _pointClouds; // array to store all the static point clouds
 
@@ -83,19 +85,29 @@ public class LoadData : MonoBehaviour
     	int rowCount = 1;
     	int yModifier = 1;
 
-    	// bool alternatePosition = false;
+    	bool alternatePosition = false;
 
     	//place those point clouds into a mural
     	for(int i = 0; i < PointCloudsTextures.Length; i++){
-    		//set parent to gameobject
-    		// PointClouds[i].transform.SetParent(_pointCloudMuralPosition.transform);
 
     		//instantiate those point clouds 
             Vector3 pointCloudPosition = new Vector3(_pointCloudMuralPosition.transform.position.x + _spacingX,_pointCloudMuralPosition.transform.position.y + _spacingY,_pointCloudMuralPosition.transform.position.z);
-            // Vector3 pointCloudPositionInverted = new Vector3();
+            Vector3 pointCloudPositionInverted = new Vector3(_pointCloudMuralPositionInverted.transform.position.x + _spacingX,_pointCloudMuralPositionInverted.transform.position.y + _spacingY,_pointCloudMuralPositionInverted.transform.position.z);
 
-    		// Vector3 pointCloudPosition = new Vector3(_pointCloudMuralPosition.transform.position.x * rowCount,_pointCloudMuralPosition.transform.position.y * yModifier,_pointCloudMuralPosition.transform.position.z); //old code through multiplication
-    		_pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPosition, _pointCloudMuralPosition.transform.rotation);
+            if(i > _invertedIncrement){
+            	alternatePosition = true;
+            }
+            
+            if(_spacingX/_spacingIncrement % _invertedIncrement == 0){
+            	_spacingX = 0;
+            	_spacingY = 0;
+            }
+
+            if(!alternatePosition){
+    			_pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPosition, _pointCloudMuralPosition.transform.rotation);
+    		} else {
+    			_pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPositionInverted, _pointCloudMuralPositionInverted.transform.rotation);
+            }
 
             //SET THE MAT/TEXTURE/NAME FOR EACH ONE OF THEM
             //..........
