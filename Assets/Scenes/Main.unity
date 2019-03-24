@@ -2069,7 +2069,7 @@ GameObject:
   - component: {fileID: 1660518536}
   - component: {fileID: 1660518537}
   m_Layer: 0
-  m_Name: Obituary Audio Loop
+  m_Name: Obituary Lin Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2104,7 +2104,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2280,7 +2280,7 @@ GameObject:
   - component: {fileID: 1931313146}
   - component: {fileID: 1931313147}
   m_Layer: 0
-  m_Name: Scanning Linear Audio
+  m_Name: Interaction Audio Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2311,11 +2311,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243821576864630278, guid: f5da533df9d98c0488b50549fdc00508,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ef67c884d9f4b5447b98edef98126ca0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
