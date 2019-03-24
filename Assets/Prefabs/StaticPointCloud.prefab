@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   w: 512
   h: 424
-  pitch: 0.01
+  pitch: 0.22
   uvShift: 1
 --- !u!114 &5337009132013202421
 MonoBehaviour:
