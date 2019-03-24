@@ -18,6 +18,8 @@ public class PointCloudDataManager : MonoBehaviour
 	public bool doNotSetTexture = false;
 
 	//components
+	[Header("Components")]
+	public WorldManager worldMan;
 	DepthSourceManagerMy depthManager;
 
 	[Header("Hash Parameters")]
@@ -53,11 +55,20 @@ public class PointCloudDataManager : MonoBehaviour
 
 	//-----------------------------------
 	//PROJECTING DATA ONTO ANOTHER OBJECT
-	public void captureData(Texture2D loadedTexture){
+	private void captureData(Texture2D loadedTexture){
 		//get components 
 		Renderer captMat = captureObject.GetComponent<Renderer>();
 		// captMat.material.SetTexture("_MainTex", _Texture);
 		captMat.material.SetTexture("_MainTex", loadedTexture);
+	}
+
+	//public function to save the participant's data
+	public void SaveParticipant(){
+		//save the texture as a png
+		SaveTextureAsPNG(depthManager._Texture, GetHash(10));
+
+		//store it temporarily in a public variable 
+		worldMan._participantPointCloud = depthManager._Texture;
 	}
 
 	//SAVE DEPTH AS PNG
@@ -73,7 +84,7 @@ public class PointCloudDataManager : MonoBehaviour
 
 	     //DEBUG
 	     // Debug.Log( Application.dataPath );
-	    Debug.Log(_bytes.Length/1024  + "Kb was saved as: " + Application.dataPath + _fileName + ".png");
+	    // Debug.Log(_bytes.Length/1024  + "Kb was saved as: " + Application.dataPath + _fileName + ".png");
 	 }
 
 	//LOAD PNG

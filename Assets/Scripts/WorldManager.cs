@@ -29,6 +29,11 @@ public class WorldManager : MonoBehaviour
 	public bool _liveScanningIsFinished = false;
 	public bool _obituaryIsFinished = false;
 
+    [Header("Participant Point Cloud")]
+    public Texture2D _participantPointCloud;
+    public PointCloudDataManager _pointCloudCapturePrefab;
+    public Renderer _obituaryParticipantPointCloud;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +71,8 @@ public class WorldManager : MonoBehaviour
     	//if this scene is finished, proceed to the next one
     	if(_initializationIsFinished){
     		_initializationIsFinished = false; //reset the bool TRIGGER IS IN THE VIDEONTERMINAL.CS
+            _pointCloudCapturePrefab.SaveParticipant(); //store the participant's point cloud data for later use
+            _obituaryParticipantPointCloud.material.SetTexture("_MainTex", _participantPointCloud);//assign that point cloud to the obituary space
     		TransitionToNextPhase(_initialization, _initCamera, _liveScanning, _liveScanningCamera);
     	}
 
