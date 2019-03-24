@@ -24,6 +24,7 @@ public class LoadData : MonoBehaviour
 	public GameObject _pointCloudMuralPositionInverted; //use an empty and reference it here
     public GameObject _pointCloudTemplate; //prefab of the point cloud
     public GameObject[] _pointClouds; // array to store all the static point clouds
+    public GameObject _pointCloudParent; //parent where the point cloud will get stored
 
 	public string _localPath = "PointClouds";
 
@@ -39,6 +40,7 @@ public class LoadData : MonoBehaviour
     {
     	//pre-emptively load all the data from the folder
     	LoadObjectsFromDataFolder(_localPath);
+        PlacePointClouds(_loadedTextures);
     }
 
     // Update is called once per frame
@@ -116,6 +118,9 @@ public class LoadData : MonoBehaviour
             Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); //fetch the renderer to assign material
             _pcRend.material = new Material(_assignedShader);
             _pcRend.material.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
+
+            //PARENT THE POINT CLOUD 
+            _pointClouds[i].transform.SetParent(_pointCloudParent.transform);
 
     		//start a new row based on the increment value
     		if(rowCount % _horizontalIncrement == 0){
