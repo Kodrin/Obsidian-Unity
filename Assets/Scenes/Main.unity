@@ -1571,7 +1571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &935226463
 Transform:
   m_ObjectHideFlags: 0
@@ -1724,7 +1724,9 @@ MonoBehaviour:
   _originalPos: {fileID: 549262392}
   _target: {fileID: 1856886507}
   _stopDistanceFromTarget: 30
-  _resetPosition: 0
+  _transitionToNextSceneTimer: 0
+  _transitionWaitTime: 10
+  _worldManager: {fileID: 182907415}
 --- !u!114 &1030062716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1796,7 +1798,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 100
+  far clip plane: 200
   field of view: 50
   orthographic: 0
   orthographic size: 5
@@ -1918,7 +1920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1096682176
 Transform:
   m_ObjectHideFlags: 0

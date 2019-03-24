@@ -9,29 +9,31 @@ public class CameraForward : MonoBehaviour
 	public Transform _originalPos;
 	public Transform _target;
 	public float _stopDistanceFromTarget;
-	public bool _resetPosition = false;
 
+    public float _transitionToNextSceneTimer = 0;
+    public float _transitionWaitTime = 10.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //original position is equal to current position
-        // _originalPos = gameObject.transform;
-    }
+    [Header("Components")]
+    public WorldManager _worldManager;
 
     // Update is called once per frame
     void Update()
     {
-    	//reset the position to original position
-    	if(_resetPosition){
-    		_resetPosition = false;
-    		gameObject.transform.position = _originalPos.position;
-    	}
 
-    	//pan the camera
+    	//PAN THE CAMERA
     	if(Vector3.Distance(_target.position, transform.position) > _stopDistanceFromTarget){
         	gameObject.transform.Translate(Vector3.forward * _panningSpeed);
-    	}
+    	} else {
+            _transitionToNextSceneTimer += Time.deltaTime;
+        }
+
+        //TRANSITION TO NEXT SCENE
+        if(_transitionToNextSceneTimer > _transitionWaitTime){
+            _transitionToNextSceneTimer = 0;
+            gameObject.transform.position = _originalPos.position; //reset position
+
+            _worldManager._obituaryIsFinished = true;   //TRANSITION TO INIT PHASE
+        }
 
 
     }
