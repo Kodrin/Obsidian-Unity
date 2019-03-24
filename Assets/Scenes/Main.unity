@@ -185,6 +185,12 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!23 &75125362 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5337009132013202378, guid: f6f9f95902dc9f1469026b63c0223f5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 556824422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &86663184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -369,12 +375,12 @@ PrefabInstance:
     - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: _initThreshold
-      value: 3
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: _poseHoldThreshold
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
@@ -1560,7 +1566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &935226463
 Transform:
   m_ObjectHideFlags: 0
@@ -1907,7 +1913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1096682176
 Transform:
   m_ObjectHideFlags: 0
@@ -2905,6 +2911,11 @@ PrefabInstance:
       propertyPath: _participantPointCloud
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 775043633746573670, guid: 909953fc537c28c4b927bfa754b41775,
+        type: 3}
+      propertyPath: _obituaryParticipantPointCloud
+      value: 
+      objectReference: {fileID: 75125362}
     - target: {fileID: 775043633746573673, guid: 909953fc537c28c4b927bfa754b41775,
         type: 3}
       propertyPath: m_LocalPosition.x
