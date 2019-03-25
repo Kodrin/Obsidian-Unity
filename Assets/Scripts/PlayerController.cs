@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float _handDistance = 15.0f; //distance between the 2 hands
     public float _elbowLToHead; //distance fron left elbow to head 
     public float _elbowRToHead;
+    public float _handsAreUpInTheAirThreshold = 3.0f;
+    public bool _handsAreUpInTheAir = false;
     private float _inputHorizontal;
 
     [Header("Timers")]
@@ -65,6 +67,17 @@ public class PlayerController : MonoBehaviour
             _elbowLToHead = Vector3.Distance(elbowLeft,head);
             _elbowRToHead = Vector3.Distance(elbowRight,head);
 
+            //average the 2 distances
+            float averagedDistance = (_elbowLToHead + _elbowRToHead)/2;
+
+            //if the average is above the threhold, then the hands are up in the air
+            if(averagedDistance < _handsAreUpInTheAirThreshold){
+                _handsAreUpInTheAir = true;
+            } else {
+                _handsAreUpInTheAir = false;
+            }
+
+
             // calc angle of hands
             float angle = Mathf.Atan2(handRight.y - handLeft.y, handRight.x - handLeft.x) * Mathf.Rad2Deg;
 
@@ -77,6 +90,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("hand distance" + _handDistance);
                 Debug.Log("elbow L distance" + _elbowLToHead);
                 Debug.Log("elbow R distance" + _elbowRToHead);
+                Debug.Log("averaged distance" + averagedDistance);
 
                 Debug.Log("Angle" + angle);
                 Debug.Log("Input Horizontal" + _inputHorizontal);

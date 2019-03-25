@@ -12,9 +12,10 @@ public class VideoOnTerminal : MonoBehaviour {
     public float _initThreshold = 2.0f;
     public float _poseHoldThreshold = 2.5f;
     private float _poseHoldTimer = 0;
-    private bool _hasChangedVideo = false;
-    private bool _isReadyToInit = false;
-    private bool _animReset;
+
+    public bool _hasChangedVideo = false;
+    public bool _isReadyToInit = false;
+    public bool _animReset;
 
     //list of video clips
     public VideoClip _idle;
@@ -25,6 +26,9 @@ public class VideoOnTerminal : MonoBehaviour {
     public RawImage rawImage;
     public VideoPlayer videoPlayer;
     public AudioSource audioSource;
+
+    //player control script
+    public PlayerController _playerController;
 
     // Use this for initialization
     void Start () {
@@ -98,7 +102,7 @@ public class VideoOnTerminal : MonoBehaviour {
         }
 
         // TRANSITION TO LIVE SCANNING IF YOU PUT YOUR HANDS UP IN THE AIR
-        if(_skeleton._elbowLToHead < _initThreshold && _skeleton._elbowRToHead < _initThreshold &&BodySourceView.bodyTracked == true){
+        if(_playerController._handsAreUpInTheAir && BodySourceView.bodyTracked == true){
             
             //TIMER FOR HOW LONG IN THE AIR UR HANDS SHOULD BE
             _poseHoldTimer += Time.deltaTime;
