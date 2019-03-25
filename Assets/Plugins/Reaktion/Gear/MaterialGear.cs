@@ -41,7 +41,7 @@ public class MaterialGear : MonoBehaviour
 
     public Gradient colorGradient;
 
-    public AnimationCurve floatCurve = AnimationCurve.Linear(0, 0, 1, 1);
+    public AnimationCurve floatCurve = AnimationCurve.Linear(0, 0, 256, 256);
 
     public Vector4 vectorFrom = Vector4.zero;
     public Vector4 vectorTo = Vector4.one;

@@ -10,6 +10,7 @@
 		_ColorBot("Gradient Color", Color) = (1,1,1,1)
 		_Middle ("Middle", Range(0.001, 0.999)) = 1
 		_CutOutThresh("Clipping Plane", Range(0.0,1.0)) = 0.2
+		_Entropy("Entropy", Range(4.0,256.0)) = 4.0
 
 		_Distance("Distance", Float) = 1
         _Amplitude("Amplitude", Float) = 1
@@ -74,6 +75,7 @@
 			float _Middle;
 			float _CutOutThresh;
 			float4 _MainTex_ST;
+			float _Entropy;
 
             float _Distance;
             float _Amplitude;
@@ -87,7 +89,7 @@
 				float4 col = tex2Dlod(_MainTex, float4(v.uv, 0, 0));
 				
 				//TextureFormat.RGBA4444の場合
-				float d = (col.w + col.z * 16 + col.y * 16 * 16 + col.x * 16 * 16 * 16) * _Displacement;
+				float d = (col.w * _Entropy+ col.z * 16 + col.y * 16 * 16 + col.x * 16 * 16 * 16) * _Displacement;
 				//TextureFormat.ARGB4444の場合
 				// float d = (col.z + col.y * 16 + col.x * 16 * 16 + col.w * 16 * 16 * 16) * _Displacement;
 				
