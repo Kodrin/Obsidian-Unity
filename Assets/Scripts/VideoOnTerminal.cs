@@ -32,7 +32,7 @@ public class VideoOnTerminal : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        StartCoroutine(PlayVideo());
+        // StartCoroutine(PlayVideo());
 
     }
 
@@ -61,14 +61,14 @@ public class VideoOnTerminal : MonoBehaviour {
         _hasChangedVideo = false;
 
         //if the experience is ready to initialize, init it!
-        if(_isReadyToInit){
-            _isReadyToInit = false; //reset bool
-            _worldManager._initializationIsFinished = true; //INITIALIZE OBSIDIAN
-        }
+        // if(_isReadyToInit){
+        //     _isReadyToInit = false; //reset bool
+        //     _worldManager._initializationIsFinished = true; //INITIALIZE OBSIDIAN
+        // }
      }
 
     //init obsidian animation transition
-    public void ChangeVideo(VideoClip nextVideo, bool Looping)
+    private void ChangeVideo(VideoClip nextVideo, bool Looping)
     {
         //switch the video
         videoPlayer.clip = nextVideo;
@@ -110,7 +110,8 @@ public class VideoOnTerminal : MonoBehaviour {
             if(_poseHoldTimer > _poseHoldThreshold && !_hasChangedVideo){
                 // ChangeVideo(_putYourHandsUp, true);
                 _poseHoldTimer = 0; //reset timer
-                _isReadyToInit = true; //THE EXPERIENCE IS READY TO INITIALIZE
+                // _isReadyToInit = true; //THE EXPERIENCE IS READY TO INITIALIZE
+                _worldManager._initializationIsFinished = true;
             }
 
         } else if(BodySourceView.bodyTracked && !_hasChangedVideo){

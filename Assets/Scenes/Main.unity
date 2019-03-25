@@ -388,6 +388,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: 7436ae6b4723bda40ae354a60d6c2e20,
         type: 3}
+    - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
+        type: 3}
+      propertyPath: _playerController
+      value: 
+      objectReference: {fileID: 609370598}
     - target: {fileID: 1556170009117724267, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: m_Mesh
@@ -1527,7 +1532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 786557435}
   m_Layer: 0
-  m_Name: LiveScanning
+  m_Name: LiveScanning--------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1566,12 +1571,12 @@ GameObject:
   m_Component:
   - component: {fileID: 935226463}
   m_Layer: 0
-  m_Name: Initialization
+  m_Name: Initialization----------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &935226463
 Transform:
   m_ObjectHideFlags: 0
@@ -1915,12 +1920,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1096682176}
   m_Layer: 0
-  m_Name: Obituary
+  m_Name: Obituary------------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1096682176
 Transform:
   m_ObjectHideFlags: 0
@@ -2115,6 +2120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoScreen (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556170009117724271, guid: cda79bf2655dd9645b7e2f7b95853e23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1556170009117724264, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
