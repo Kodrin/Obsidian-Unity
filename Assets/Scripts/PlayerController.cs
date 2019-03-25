@@ -22,12 +22,6 @@ public class PlayerController : MonoBehaviour
     private float _participantHasExitedTimer = 0;
     public float _participantHasExitedThreshold = 5.0f;
 
-    void Start()
-    {
-        // if(_isDebugging)
-        //     GetListOfBones();
-    }
-
     void Update()
     {
         // inputs for the initialization phase

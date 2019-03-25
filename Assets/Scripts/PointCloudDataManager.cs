@@ -74,10 +74,6 @@ public class PointCloudDataManager : MonoBehaviour
 	//SAVE DEPTH AS PNG
 	public static void SaveTextureAsPNG(Texture2D _texture, string _fileName)
 	 {
-	 	//creating the texture
-	 	// Texture2D tex = new Texture2D(512, 424, TextureFormat.RGB24, false);
-	 	// tex.ReadPixels(new Rect(0, 0, _texture.width, _texture.height), 0, 0, false);
-	 	// tex.Apply();
 	 	//encoding
 	     byte[] _bytes = _texture.EncodeToPNG();
 	     System.IO.File.WriteAllBytes(Application.dataPath + "/" + _fileName + ".png", _bytes);

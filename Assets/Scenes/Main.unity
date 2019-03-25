@@ -2739,6 +2739,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 216877996}
   _orbitSpeed: 3
+  _offset: 0
+  _playerController: {fileID: 609370598}
 --- !u!114 &2024135359
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,6 @@ public class VideoOnTerminal : MonoBehaviour {
     private float _poseHoldTimer = 0;
 
     public bool _hasChangedVideo = false;
-    public bool _isReadyToInit = false;
     public bool _animReset;
 
     //list of video clips
@@ -30,41 +29,15 @@ public class VideoOnTerminal : MonoBehaviour {
     //player control script
     public PlayerController _playerController;
 
-    // Use this for initialization
-    void Start () {
-        // StartCoroutine(PlayVideo());
-
-    }
-
     void Update () {
         InitializeObsidian();
     } 
     
-    IEnumerator PlayVideo()
-    {
-        videoPlayer.Prepare();
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1);
-        while (!videoPlayer.isPrepared)
-        {
-            yield return waitForSeconds;
-            break;
-        }
-        // rawImage.texture = videoPlayer.texture;
-        videoPlayer.Play();
-        audioSource.Play();
-     }
-
     //timer that waits for the video to finish 
     IEnumerator ResetChangeVideo(float lengthOfVideo)
     {
         yield return new WaitForSeconds(lengthOfVideo);
         _hasChangedVideo = false;
-
-        //if the experience is ready to initialize, init it!
-        // if(_isReadyToInit){
-        //     _isReadyToInit = false; //reset bool
-        //     _worldManager._initializationIsFinished = true; //INITIALIZE OBSIDIAN
-        // }
      }
 
     //init obsidian animation transition
@@ -80,9 +53,6 @@ public class VideoOnTerminal : MonoBehaviour {
             videoPlayer.isLooping = false;
             videoPlayer.Play();
         }
-
-        // videoPlayer.Play();
-        // audioSource.Play();
 
         //has changed video
         _hasChangedVideo = true;
@@ -108,10 +78,8 @@ public class VideoOnTerminal : MonoBehaviour {
             _poseHoldTimer += Time.deltaTime;
 
             if(_poseHoldTimer > _poseHoldThreshold && !_hasChangedVideo){
-                // ChangeVideo(_putYourHandsUp, true);
                 _poseHoldTimer = 0; //reset timer
-                // _isReadyToInit = true; //THE EXPERIENCE IS READY TO INITIALIZE
-                _worldManager._initializationIsFinished = true;
+                _worldManager._initializationIsFinished = true; //THE EXPERIENCE IS READY TO INITIALIZE
             }
 
         } else if(BodySourceView.bodyTracked && !_hasChangedVideo){

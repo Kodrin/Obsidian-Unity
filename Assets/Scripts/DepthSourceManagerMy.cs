@@ -82,14 +82,6 @@ public class DepthSourceManagerMy : MonoBehaviour
 				frame = null;
 			}
 		}
-
-		//debug
-		// //save texture
-		// if(Input.GetKeyDown(KeyCode.S) && doNotSetTexture != true)
-		// 	SaveTextureAsPNG(_Texture, pathToTexture, pngFileName);
-		// //capture
-		// if(Input.GetKeyDown("space") && doNotSetTexture != true)
-		// 	captureData(LoadPNG(Application.dataPath + pathToTexture + pngFileName + ".png"));
 	}
 
 	void OnApplicationQuit()
