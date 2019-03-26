@@ -5,10 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class VideoOnTerminal : MonoBehaviour {
-    
-    //skeleton reference
-    public PlayerController _skeleton;
+    [Header("Am I debugging?")]
+    public bool _isDebugging = false;
+
+    [Header("References")]
+    //player controller reference/world manager
+    public FloorProjection _floorProjection;
+    public PlayerController _playerController;
     public WorldManager _worldManager;
+
+    [Header("Pose Param/transition to LS")]
     public float _initThreshold = 2.0f;
     public float _poseHoldThreshold = 2.5f;
     private float _poseHoldTimer = 0;
@@ -16,21 +22,24 @@ public class VideoOnTerminal : MonoBehaviour {
     public bool _hasChangedVideo = false;
     public bool _animReset;
 
+    [Header("Clips")]
     //list of video clips
     public VideoClip _idle;
     public VideoClip _initializing;
     public VideoClip _putYourHandsUp;
 
+    [Header("Video References")]
     //Video variable references
     public RawImage rawImage;
     public VideoPlayer videoPlayer;
     public AudioSource audioSource;
 
-    //player control script
-    public PlayerController _playerController;
 
     void Update () {
         InitializeObsidian();
+
+        if(_isDebugging)
+            Debugging();
     } 
     
     //timer that waits for the video to finish 
@@ -68,6 +77,7 @@ public class VideoOnTerminal : MonoBehaviour {
         //if your body is not tracked, then play the idle anima
         if(!BodySourceView.bodyTracked && !_hasChangedVideo){
             ChangeVideo(_idle, true);
+            _floorProjection.MimicVideo(_floorProjection._idle, true);
             _animReset = true;
         }
 
@@ -88,11 +98,17 @@ public class VideoOnTerminal : MonoBehaviour {
             if(_animReset){
                 _animReset = false;
                 ChangeVideo(_initializing, false);
+                _floorProjection.MimicVideo(_floorProjection._initializing, false);
             }
 
             // PUT YOUR HANDS UP ANIM
             if(!_hasChangedVideo)
                 ChangeVideo(_putYourHandsUp, true);
+                _floorProjection.MimicVideo(_floorProjection._putYourHandsUp, true);
         }
+    }
+
+    private void Debugging(){
+        
     }
 }
