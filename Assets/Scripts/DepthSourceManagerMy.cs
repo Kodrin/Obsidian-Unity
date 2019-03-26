@@ -7,9 +7,6 @@ public class DepthSourceManagerMy : MonoBehaviour
 {
 	//debug
 	[Header("Capture Object")]
-	public GameObject captureObject;
-	public string pathToTexture;
-	public string pngFileName;
 	public bool doNotSetTexture = false;
 
 	private KinectSensor _Sensor;
@@ -51,7 +48,7 @@ public class DepthSourceManagerMy : MonoBehaviour
 		}
 
 		//do not set texture bool
-		if(doNotSetTexture != true){
+		if(!doNotSetTexture){
 			_Texture.LoadRawTextureData(_RawData);
 			_Texture.Apply();
 			mat.SetTexture("_MainTex", _Texture);

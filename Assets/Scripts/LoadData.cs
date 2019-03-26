@@ -34,13 +34,18 @@ public class LoadData : MonoBehaviour
 	[Header("Shader Properties")]
 	public Shader _assignedShader;
 
+    void Awake()
+    {
+        //pre-emptively load all the data from the folder
+        LoadObjectsFromDataFolder(_localPath);
+        PlacePointClouds(_loadedTextures);
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
-    	//pre-emptively load all the data from the folder
-    	LoadObjectsFromDataFolder(_localPath);
-        PlacePointClouds(_loadedTextures);
+        PlaceMaterialOnPointCloud(_loadedTextures);
     }
 
     // Update is called once per frame
@@ -115,9 +120,9 @@ public class LoadData : MonoBehaviour
             //..........
             SetSubjectName _setSubjName = _pointClouds[i].GetComponent<SetSubjectName>();
             _setSubjName.SetName(GetHash(10));
-            Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); //fetch the renderer to assign material
-            _pcRend.material = new Material(_assignedShader);
-            _pcRend.material.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
+            // Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); //fetch the renderer to assign material
+            // _pcRend.material = new Material(_assignedShader);
+            // _pcRend.material.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
 
             //PARENT THE POINT CLOUD 
             _pointClouds[i].transform.SetParent(_pointCloudParent.transform);
@@ -145,6 +150,14 @@ public class LoadData : MonoBehaviour
     		}
     		
     	}
+    }
+
+    private void PlaceMaterialOnPointCloud(Texture2D[] PointCloudsTextures){
+        for(int i = 0; i < _pointClouds.Length; i++){
+            Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); //fetch the renderer to assign material
+            _pcRend.material = new Material(_assignedShader);
+            _pcRend.material.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
+        }
     }
 
 
