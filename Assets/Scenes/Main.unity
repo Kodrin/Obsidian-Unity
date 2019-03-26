@@ -811,6 +811,11 @@ PrefabInstance:
       propertyPath: m_SensorSize.y
       value: 7.49
       objectReference: {fileID: 0}
+    - target: {fileID: 263840334271892549, guid: 97753d6ac326f3b4c928a556c77bcd95,
+        type: 3}
+      propertyPath: _isDebugging
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97753d6ac326f3b4c928a556c77bcd95, type: 3}
 --- !u!4 &370515252 stripped
@@ -1153,6 +1158,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.003806335
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556170007780094420, guid: cda79bf2655dd9645b7e2f7b95853e23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23, type: 3}
@@ -2096,12 +2106,12 @@ MonoBehaviour:
     _name: 
     _forceUpdate: 0
   materialIndex: 0
-  targetName: _Entropy
-  targetType: 1
+  targetName: _Color
+  targetType: 0
   threshold: 0.5
   colorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 0.89887714, g: 0, b: 1, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -2141,8 +2151,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 12.377191
-      value: 213.04593
+      time: 1.8353205
+      value: 16.929611
       inSlope: 1
       outSlope: 1
       tangentMode: 0
@@ -2202,7 +2212,7 @@ PrefabInstance:
     - target: {fileID: 1556170009117724271, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1556170009117724264, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
@@ -2434,7 +2444,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243821576864630278, guid: f5da533df9d98c0488b50549fdc00508,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ef67c884d9f4b5447b98edef98126ca0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2707,7 +2717,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243821576864630278, guid: f5da533df9d98c0488b50549fdc00508,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: ef67c884d9f4b5447b98edef98126ca0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3d9078d82bf046445aec7ab73358e4b0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
