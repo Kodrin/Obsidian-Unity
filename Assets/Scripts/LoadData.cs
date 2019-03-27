@@ -10,7 +10,7 @@ public class LoadData : MonoBehaviour
 {
 	[Header("Am I debugging?")]
 	public bool _isDebugging = false;
-
+    public Texture2D _debugText;
 
 	[Header("Placement Properties")]
 
@@ -30,7 +30,7 @@ public class LoadData : MonoBehaviour
 	public string _localPath = "PointClouds";
 
 	private UnityEngine.Object[] _loadedObjects; //preliminary loading of all the assets in the folder 
-	private Texture2D[] _loadedTextures; //to store all the loaded objects
+	public Texture2D[] _loadedTextures; //to store all the loaded objects
 
 	[Header("Shader Properties")]
 	public Shader _assignedShader;
@@ -57,6 +57,8 @@ public class LoadData : MonoBehaviour
         if(_isDebugging){
 	    	if(Input.GetKeyDown("space"))
 	        	PlacePointClouds(_loadedTextures);
+            if(Input.GetKeyDown("s"))
+                ShiftData(_debugText);
         }
     }
 
@@ -168,6 +170,31 @@ public class LoadData : MonoBehaviour
             Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); //fetch the renderer to assign material
             _pcRend.material = new Material(_assignedShader);
             _pcRend.material.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
+        }
+    }
+
+    //---------------------------------
+    //SHIFT POINT CLOUD DATA
+
+    /*
+    param: _newParticipant
+    param: _loadedTextures;
+    */
+
+    public void ShiftData(Texture2D newParticipant){
+        //temp var to store index
+        Texture2D currentIndexText = newParticipant;
+
+        //SHIFT THE ARRAY
+        for(int i = 0; i < _loadedTextures.Length - 1; i++){
+                _loadedTextures[i] =  _loadedTextures[i+1];
+        }
+        _loadedTextures[_loadedTextures.Length -1] = currentIndexText;
+        
+        ////apply the new texture
+        for(int i = 0; i < _pointClouds.Length; i++){
+            Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); 
+            _pcRend.material.SetTexture("_MainTex",_loadedTextures[i]); 
         }
     }
 
