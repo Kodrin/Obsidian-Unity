@@ -17,7 +17,7 @@ public class OrbitControl : MonoBehaviour
     void Update()
     {
         //remap the hand distance
-        float remappedHands= map(_playerController._handDistance, 0.0f, 10.0f, -0.1f,0.1f);
+        float remappedHands= map(_playerController._handDistance, 0.0f, 15.0f, -0.1f,0.1f);
 
         //constrain the camera
 

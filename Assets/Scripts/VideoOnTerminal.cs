@@ -77,7 +77,7 @@ public class VideoOnTerminal : MonoBehaviour {
         //if your body is not tracked, then play the idle anima
         if(!BodySourceView.bodyTracked && !_hasChangedVideo){
             ChangeVideo(_idle, true);
-            _floorProjection.MimicVideo(_floorProjection._idle, true);
+            // _floorProjection.MimicVideo(_floorProjection._idle, true);
             _animReset = true;
         }
 
@@ -100,13 +100,13 @@ public class VideoOnTerminal : MonoBehaviour {
             if(_animReset){
                 _animReset = false;
                 ChangeVideo(_initializing, false);
-                _floorProjection.MimicVideo(_floorProjection._initializing, false);
+                // _floorProjection.MimicVideo(_floorProjection._initializing, false);
             }
 
             // PUT YOUR HANDS UP ANIM
             if(!_hasChangedVideo)
                 ChangeVideo(_putYourHandsUp, true);
-                _floorProjection.MimicVideo(_floorProjection._putYourHandsUp, true);
+                // _floorProjection.MimicVideo(_floorProjection._putYourHandsUp, true);
         }
     }
 

@@ -23,6 +23,7 @@ public class FloorProjection : MonoBehaviour
     public AudioSource audioSource;
 
     public bool _hasChangedVideo = false;
+    public bool _animReset;
 
     // Update is called once per frame
     void Update()
@@ -32,8 +33,33 @@ public class FloorProjection : MonoBehaviour
 	    	//switch the video
 			videoPlayer.clip = _otherScenes;
 			videoPlayer.isLooping = true;
-    	}
+    	} else {
+            InitializeObsidian();
+        }
         
+    }
+
+   //Handles the idle/tracking/initiate of the experience
+    public void InitializeObsidian(){
+
+        //if your body is not tracked, then play the idle anima
+        if(!BodySourceView.bodyTracked && !_hasChangedVideo){
+            MimicVideo(_idle, true);
+            _animReset = true;
+        }
+
+        if(BodySourceView.bodyTracked && !_hasChangedVideo){
+
+            // BOOL TO PLAY VIDEO PLAYER ONE SHOT
+            if(_animReset){
+                _animReset = false;
+                MimicVideo(_initializing, false);
+            }
+
+            // PUT YOUR HANDS UP ANIM
+            if(!_hasChangedVideo)
+                MimicVideo(_putYourHandsUp, true);
+        }
     }
 
 	public void MimicVideo(VideoClip nextVideo, bool Looping)

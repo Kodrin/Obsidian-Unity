@@ -18,13 +18,19 @@ public class PlayerController : MonoBehaviour
     public bool _handsAreUpInTheAir = false;
     private float _inputHorizontal;
 
+    [Header("Reactive Shader")]
+    public Renderer _liveScanRend;
+    public Material _liveScanMat;
+
     [Header("Timers")]
     private float _participantHasExitedTimer = 0;
     public float _participantHasExitedThreshold = 5.0f;
+    private float _handsInTheAirTimer = 0;
+    public float _handsInTheAirHold = 1.5f;
 
     private bool _handsWereRaised = false;
 
-    void Update()
+    void FixedUpdate()
     {
         // inputs for the initialization phase
         if(_worldManager._isOnInitializing || _isDebugging)
@@ -75,8 +81,12 @@ public class PlayerController : MonoBehaviour
 
             if(averagedDistance < _handsAreUpInTheAirThreshold && !_handsWereRaised){
                 _handsAreUpInTheAir = true;
-                StartCoroutine(ResetHandsUp());
-                InitIsFinished();
+                _handsInTheAirTimer += Time.deltaTime;
+
+                if(_handsInTheAirTimer > _handsInTheAirHold){
+                    StartCoroutine(ResetHandsUp());
+                    InitIsFinished();
+                }
             } 
 
             // calc angle of hands
@@ -114,13 +124,20 @@ public class PlayerController : MonoBehaviour
             float angle = Mathf.Atan2(handRight.y - handLeft.y, handRight.x - handLeft.x) * Mathf.Rad2Deg;
 
             // convert angle rotation to movement values
-            _inputHorizontal = Mathf.Lerp(1.0f, -1.0f, Mathf.InverseLerp(-45.0f, 45.0f, angle));           
+            _inputHorizontal = Mathf.Lerp(1.0f, -1.0f, Mathf.InverseLerp(-45.0f, 45.0f, angle));   
+
+            //remap the input
+            float reMappedHorizontal = ReMap(_inputHorizontal,1.0f,-1.0f,32.0f,4.0f);
+
+            //assign it to shader        
+            _liveScanMat.SetFloat("_Entropy", reMappedHorizontal);
         }
 
         //if the participant is not detected anymore, proceed to the obituary
         if (!BodySourceView.bodyTracked){
             //timer 
             _participantHasExitedTimer += Time.deltaTime;
+            ResetBoneValues();
             //if the timer exceed the threshold, then the participant has left the scene and we can initiate the obituary
             if(_participantHasExitedTimer > _participantHasExitedThreshold){
                 _participantHasExitedTimer = 0; 
@@ -134,6 +151,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private static float ReMap(float s, float a1, float a2, float b1, float b2)
+    {
+        return b1 + (s-a1)*(b2-b1)/(a2-a1);
+    }
+
     IEnumerator ResetHandsUp()
     {
         yield return new WaitForSeconds(5);
@@ -142,12 +164,13 @@ public class PlayerController : MonoBehaviour
     }
 
     private void ResetBoneValues(){
-        _handDistance = 15.0f; //distance between the 2 hands
-        _elbowLToHead = 0; //distance fron left elbow to head 
-        _elbowRToHead = 0;       
+        _handDistance = 7.0f; //distance between the 2 hands
+        _elbowLToHead = 100; //distance fron left elbow to head 
+        _elbowRToHead = 100;       
     }
 
     private void InitIsFinished(){
+        _handsInTheAirTimer = 0;
         _worldManager._isOnInitializing = false;
         _worldManager._initializationIsFinished = true;
 
