@@ -30,6 +30,7 @@ public class WorldManager : MonoBehaviour
 	public bool _obituaryIsFinished = false;
 
     [Header("Participant Point Cloud")]
+    public Texture2D _previousParticipantPointCloud;
     public Texture2D _participantPointCloud;
     public PointCloudDataManager _pointCloudCapturePrefab;
     public Renderer _obituaryParticipantPointCloud;

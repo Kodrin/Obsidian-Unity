@@ -182,6 +182,7 @@ public class LoadData : MonoBehaviour
     */
 
     public void ShiftData(Texture2D newParticipant){
+
         //temp var to store index
         Texture2D currentIndexText = newParticipant;
 
@@ -191,11 +192,14 @@ public class LoadData : MonoBehaviour
         }
         _loadedTextures[_loadedTextures.Length -1] = currentIndexText;
         
-        ////apply the new texture
+        //apply the new texture
         for(int i = 0; i < _pointClouds.Length; i++){
             Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); 
             _pcRend.material.SetTexture("_MainTex",_loadedTextures[i]); 
         }
+
+        //set the color white for the current scan
+        _pointClouds[0].GetComponent<Renderer>().material.SetColor("_Color", Color.white);
     }
 
 
