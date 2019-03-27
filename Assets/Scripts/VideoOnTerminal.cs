@@ -82,17 +82,19 @@ public class VideoOnTerminal : MonoBehaviour {
         }
 
         // TRANSITION TO LIVE SCANNING IF YOU PUT YOUR HANDS UP IN THE AIR
-        if(_playerController._handsAreUpInTheAir && BodySourceView.bodyTracked == true){
+        // if(_playerController._handsAreUpInTheAir && BodySourceView.bodyTracked == true){
             
-            //TIMER FOR HOW LONG IN THE AIR UR HANDS SHOULD BE
-            _poseHoldTimer += Time.deltaTime;
+        //     //TIMER FOR HOW LONG IN THE AIR UR HANDS SHOULD BE
+        //     _poseHoldTimer += Time.deltaTime;
 
-            if(_poseHoldTimer > _poseHoldThreshold && !_hasChangedVideo){
-                _poseHoldTimer = 0; //reset timer
-                _worldManager._initializationIsFinished = true; //THE EXPERIENCE IS READY TO INITIALIZE
-            }
+        //     if(_poseHoldTimer > _poseHoldThreshold && !_hasChangedVideo){
+        //         _poseHoldTimer = 0; //reset timer
+        //         _worldManager._initializationIsFinished = true; //THE EXPERIENCE IS READY TO INITIALIZE
+        //     }
 
-        } else if(BodySourceView.bodyTracked && !_hasChangedVideo){
+        // }  
+
+        if(BodySourceView.bodyTracked && !_hasChangedVideo){
 
             // BOOL TO PLAY VIDEO PLAYER ONE SHOT
             if(_animReset){

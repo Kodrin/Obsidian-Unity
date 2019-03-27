@@ -199,7 +199,7 @@ public class LoadData : MonoBehaviour
         }
 
         //set the color white for the current scan
-        _pointClouds[0].GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+        _pointClouds[_pointClouds.Length-1].GetComponent<Renderer>().material.SetColor("_Color", Color.white);
     }
 
 

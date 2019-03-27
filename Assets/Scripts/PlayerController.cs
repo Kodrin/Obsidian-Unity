@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private float _participantHasExitedTimer = 0;
     public float _participantHasExitedThreshold = 5.0f;
 
+    private bool _handsWereRaised = false;
+
     void Update()
     {
         // inputs for the initialization phase
@@ -65,12 +67,17 @@ public class PlayerController : MonoBehaviour
             float averagedDistance = (_elbowLToHead + _elbowRToHead)/2;
 
             //if the average is above the threhold, then the hands are up in the air
-            if(averagedDistance < _handsAreUpInTheAirThreshold){
-                _handsAreUpInTheAir = true;
-            } else {
-                _handsAreUpInTheAir = false;
-            }
+            // if(averagedDistance < _handsAreUpInTheAirThreshold){
+            //     _handsAreUpInTheAir = true;
+            // } else {
+            //     _handsAreUpInTheAir = false;
+            // }
 
+            if(averagedDistance < _handsAreUpInTheAirThreshold && !_handsWereRaised){
+                _handsAreUpInTheAir = true;
+                StartCoroutine(ResetHandsUp());
+                InitIsFinished();
+            } 
 
             // calc angle of hands
             float angle = Mathf.Atan2(handRight.y - handLeft.y, handRight.x - handLeft.x) * Mathf.Rad2Deg;
@@ -124,6 +131,25 @@ public class PlayerController : MonoBehaviour
 
     //controls to navigate the obituary
     private void ObituaryControls(){
+
+    }
+
+    IEnumerator ResetHandsUp()
+    {
+        yield return new WaitForSeconds(5);
+        _handsWereRaised = false;
+        ResetBoneValues();
+    }
+
+    private void ResetBoneValues(){
+        _handDistance = 15.0f; //distance between the 2 hands
+        _elbowLToHead = 0; //distance fron left elbow to head 
+        _elbowRToHead = 0;       
+    }
+
+    private void InitIsFinished(){
+        _worldManager._isOnInitializing = false;
+        _worldManager._initializationIsFinished = true;
 
     }
 
