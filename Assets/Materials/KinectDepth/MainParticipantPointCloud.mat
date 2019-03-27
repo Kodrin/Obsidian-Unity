@@ -66,6 +66,7 @@ Material:
     - _Distance: 1
     - _Division: 0.69
     - _DstBlend: 0
+    - _Entropy: 4
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
