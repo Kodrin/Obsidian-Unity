@@ -16,8 +16,9 @@ public class LoadData : MonoBehaviour
 
 	public int _spacingX; //spacing between each of the point clouds 
     public int _spacingY;
-    public int _spacingIncrement = 5; 
+    public int _spacingIncrement = 5;
 	public int _horizontalIncrement; //starts a new row after x amount of point clouds
+    public bool _invert = false;
 	public int _invertedIncrement = 15; //point at which the mural inverts
 
 	public GameObject _pointCloudMuralPosition; //use an empty and reference it here
@@ -45,7 +46,7 @@ public class LoadData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlaceMaterialOnPointCloud(_loadedTextures);
+        // PlaceMaterialOnPointCloud(_loadedTextures);
     }
 
     // Update is called once per frame
@@ -98,31 +99,39 @@ public class LoadData : MonoBehaviour
     	for(int i = 0; i < PointCloudsTextures.Length; i++){
 
     		//instantiate those point clouds 
-            Vector3 pointCloudPosition = new Vector3(_pointCloudMuralPosition.transform.position.x + _spacingX,_pointCloudMuralPosition.transform.position.y + _spacingY,_pointCloudMuralPosition.transform.position.z);
+            Vector3 pointCloudPosition = new Vector3(_pointCloudMuralPosition.transform.position.x,_pointCloudMuralPosition.transform.position.y + _spacingX,_pointCloudMuralPosition.transform.position.z+ _spacingY);
             Vector3 pointCloudPositionInverted = new Vector3(_pointCloudMuralPositionInverted.transform.position.x + _spacingX,_pointCloudMuralPositionInverted.transform.position.y + _spacingY,_pointCloudMuralPositionInverted.transform.position.z);
 
-            if(i > _invertedIncrement){
-            	alternatePosition = true;
-            }
-            
-            if(_spacingX/_spacingIncrement % _invertedIncrement == 0){
-            	_spacingX = 0;
-            	_spacingY = 0;
+            //INVERT increments
+            if(_invert){
+                if(i > _invertedIncrement){
+                	alternatePosition = true;
+                }
+                
+                if(_spacingX/_spacingIncrement % _invertedIncrement == 0){
+                	_spacingX = 0;
+                	_spacingY = 0;
+                }
             }
 
-            if(!alternatePosition){
-    			_pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPosition, _pointCloudMuralPosition.transform.rotation);
-    		} else {
-    			_pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPositionInverted, _pointCloudMuralPositionInverted.transform.rotation);
+            //IF INVERT IS ON , THEN STACK THE DATA ON 2 PLANES, ELSE STACK IT ON 1 PLANE (MURAL)
+            if(_invert){
+                if(!alternatePosition){
+        			_pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPosition, _pointCloudMuralPosition.transform.rotation);
+        		} else {
+        			_pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPositionInverted, _pointCloudMuralPositionInverted.transform.rotation);
+                }
+            } else {
+                _pointClouds[i] = (GameObject)Instantiate(_pointCloudTemplate,pointCloudPosition, _pointCloudMuralPosition.transform.rotation);
             }
 
             //SET THE MAT/TEXTURE/NAME FOR EACH ONE OF THEM
             //..........
             SetSubjectName _setSubjName = _pointClouds[i].GetComponent<SetSubjectName>();
             _setSubjName.SetName(GetHash(10));
-            // Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); //fetch the renderer to assign material
-            // _pcRend.material = new Material(_assignedShader);
-            // _pcRend.material.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
+            Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); //fetch the renderer to assign material
+            _pcRend.material = new Material(_assignedShader);
+            _pcRend.material.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
 
             //PARENT THE POINT CLOUD 
             _pointClouds[i].transform.SetParent(_pointCloudParent.transform);
