@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5337009131841298044}
-  m_LocalRotation: {x: 1, y: 0, z: -0.000003188848, w: 0}
-  m_LocalPosition: {x: -3, y: 1, z: 13}
-  m_LocalScale: {x: 0.064600006, y: 0.064600006, z: 0.064600006}
+  m_LocalRotation: {x: -0.00000044703478, y: -0, z: -1, w: 0}
+  m_LocalPosition: {x: 4.561, y: 8.7508, z: -4}
+  m_LocalScale: {x: 0.094767526, y: 0.094767526, z: 0.094767526}
   m_Children: []
   m_Father: {fileID: 5337009132013202420}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 179.99998, z: -179.99998}
+  m_LocalEulerAnglesHint: {x: 0, y: 360, z: -179.99998}
 --- !u!23 &5337009131841298046
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -85,12 +85,12 @@ TextMesh:
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 0
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 47a525c94919dd84cbbbb79dd81b2fa0, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4283269370
 --- !u!1 &5337009132013202376
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f3396a8b70a93438b30f567c970c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  w: 512
-  h: 424
-  pitch: 0.01
+  w: 256
+  h: 212
+  pitch: 0.03
   uvShift: 1
 --- !u!114 &5337009132013202421
 MonoBehaviour:

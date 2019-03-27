@@ -34,6 +34,7 @@ public class LoadData : MonoBehaviour
 
 	[Header("Shader Properties")]
 	public Shader _assignedShader;
+    public Material _assignedMat;
 
     void Awake()
     {
@@ -99,7 +100,7 @@ public class LoadData : MonoBehaviour
     	for(int i = 0; i < PointCloudsTextures.Length; i++){
 
     		//instantiate those point clouds 
-            Vector3 pointCloudPosition = new Vector3(_pointCloudMuralPosition.transform.position.x,_pointCloudMuralPosition.transform.position.y + _spacingX,_pointCloudMuralPosition.transform.position.z+ _spacingY);
+            Vector3 pointCloudPosition = new Vector3(_pointCloudMuralPosition.transform.position.x,_pointCloudMuralPosition.transform.position.y + _spacingY,_pointCloudMuralPosition.transform.position.z+ _spacingX);
             Vector3 pointCloudPositionInverted = new Vector3(_pointCloudMuralPositionInverted.transform.position.x + _spacingX,_pointCloudMuralPositionInverted.transform.position.y + _spacingY,_pointCloudMuralPositionInverted.transform.position.z);
 
             //INVERT increments
@@ -130,7 +131,8 @@ public class LoadData : MonoBehaviour
             SetSubjectName _setSubjName = _pointClouds[i].GetComponent<SetSubjectName>();
             _setSubjName.SetName(GetHash(10));
             Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); //fetch the renderer to assign material
-            _pcRend.material = new Material(_assignedShader);
+            // _pcRend.material = new Material(_assignedShader);
+            _pcRend.material = _assignedMat;
             _pcRend.material.SetTexture("_MainTex",PointCloudsTextures[i]); //assign the material
 
             //PARENT THE POINT CLOUD 

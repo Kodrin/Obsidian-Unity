@@ -9,10 +9,10 @@ public class PointCloudDataManager : MonoBehaviour
 {
 	[Header("Am I debugging?")]
 	public bool _isDebugging = false;
-
+	public Texture2D _debugText;
+	public GameObject captureObject;
 
 	[Header("Capture Point Cloud")]
-	public GameObject captureObject;
 	public GameObject livepointCloudFeed;
 	public string lastPngSaved;
 	public bool doNotSetTexture = false;
@@ -48,7 +48,7 @@ public class PointCloudDataManager : MonoBehaviour
 				SaveTextureAsPNG(depthManager._Texture, GetHash(10));
 			//capture
 			if(Input.GetKeyDown("space") && doNotSetTexture != true)
-				captureData(LoadPNG(Application.dataPath + "/" + lastPngSaved + ".png"));
+				captureData(_debugText);
 		}
     }
 
