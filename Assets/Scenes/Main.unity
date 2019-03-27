@@ -1014,7 +1014,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 8400000, guid: c5c5df21ce9161b47a46175f47f59dce, type: 2}
+  m_Texture: {fileID: 8400000, guid: 8d618314b6e86d54bac26d408abdbb08, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1033,7 +1033,7 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: c5c5df21ce9161b47a46175f47f59dce, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 8d618314b6e86d54bac26d408abdbb08, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
@@ -1303,7 +1303,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 8400000, guid: c5c5df21ce9161b47a46175f47f59dce, type: 2}
+      objectReference: {fileID: 8400000, guid: 8d618314b6e86d54bac26d408abdbb08, type: 2}
     - target: {fileID: 1556170007771205329, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: m_AspectRatio
@@ -1323,7 +1323,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 8400000, guid: c5c5df21ce9161b47a46175f47f59dce, type: 2}
+      objectReference: {fileID: 8400000, guid: 8d618314b6e86d54bac26d408abdbb08, type: 2}
     - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: _initializing
@@ -1994,7 +1994,7 @@ MonoBehaviour:
   _target: {fileID: 1856886507}
   _stopDistanceFromTarget: 60
   _transitionToNextSceneTimer: 0
-  _transitionWaitTime: 120
+  _transitionWaitTime: 30
   _worldManager: {fileID: 182907415}
 --- !u!114 &1030062716
 MonoBehaviour:
@@ -2009,10 +2009,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockSize: 1
-  _entropy: 0.238
+  _entropy: 0.1
   _noiseContrast: 2.17
-  _velocityScale: 0.8
-  _diffusion: 1.75
+  _velocityScale: 1.26
+  _diffusion: 1.98
   _shader: {fileID: 4800000, guid: 998cec7a45d274e3995fbccf2c4480bf, type: 3}
 --- !u!114 &1030062717
 MonoBehaviour:
@@ -2362,7 +2362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1419531473
 Transform:
   m_ObjectHideFlags: 0
@@ -2371,7 +2371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419531472}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.000002682209}
-  m_LocalPosition: {x: 0.61, y: 0.46700037, z: 2.8}
+  m_LocalPosition: {x: 0.61, y: 0.46700037, z: -0.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1056106666}
