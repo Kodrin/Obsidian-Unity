@@ -22,6 +22,9 @@ public class VideoOnTerminal : MonoBehaviour {
     public bool _hasChangedVideo = false;
     public bool _animReset;
 
+    [Header("Main Audio Loop")]
+    public GameObject _audioLoop;
+
     [Header("Clips")]
     //list of video clips
     public VideoClip _idle;
@@ -100,6 +103,7 @@ public class VideoOnTerminal : MonoBehaviour {
             if(_animReset){
                 _animReset = false;
                 ChangeVideo(_initializing, false);
+                _audioLoop.SetActive(true); //start the audio loop
                 // _floorProjection.MimicVideo(_floorProjection._initializing, false);
             }
 

@@ -398,6 +398,11 @@ PrefabInstance:
       propertyPath: _floorProjection
       value: 
       objectReference: {fileID: 1744037146}
+    - target: {fileID: 1556170007771205333, guid: cda79bf2655dd9645b7e2f7b95853e23,
+        type: 3}
+      propertyPath: _audioLoop
+      value: 
+      objectReference: {fileID: 1931313145}
     - target: {fileID: 1556170009117724267, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: m_Mesh
@@ -1648,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 4619476663254679098, guid: 3dbe255b79ef8384cb13cf4f5f547572,
         type: 3}
       propertyPath: _isDebugging
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4619476663254679098, guid: 3dbe255b79ef8384cb13cf4f5f547572,
         type: 3}
