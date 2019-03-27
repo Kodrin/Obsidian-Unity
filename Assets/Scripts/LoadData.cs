@@ -196,10 +196,16 @@ public class LoadData : MonoBehaviour
         for(int i = 0; i < _pointClouds.Length; i++){
             Renderer _pcRend = _pointClouds[i].GetComponent<Renderer>(); 
             _pcRend.material.SetTexture("_MainTex",_loadedTextures[i]); 
+
+            //shift position
+            int random = UnityEngine.Random.Range(0,_pointClouds.Length-1);
+            Vector3 tempPosition = _pointClouds[i].transform.position;
+            _pointClouds[i].transform.position = _pointClouds[random].transform.position;
+            _pointClouds[random].transform.position =  tempPosition;
         }
 
         //set the color white for the current scan
-        _pointClouds[_pointClouds.Length-1].GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+        // _pointClouds[_pointClouds.Length-1].GetComponent<Renderer>().material.SetColor("_Color", Color.white);
     }
 
 
