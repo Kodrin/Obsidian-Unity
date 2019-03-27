@@ -103,7 +103,7 @@ public class VideoOnTerminal : MonoBehaviour {
             if(_animReset){
                 _animReset = false;
                 ChangeVideo(_initializing, false);
-                _audioLoop.SetActive(true); //start the audio loop
+                _audioLoop.PlayDelayed(5); //start the audio loop
                 // _floorProjection.MimicVideo(_floorProjection._initializing, false);
             }
 
