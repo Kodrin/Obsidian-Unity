@@ -1653,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 4619476663254679098, guid: 3dbe255b79ef8384cb13cf4f5f547572,
         type: 3}
       propertyPath: _isDebugging
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4619476663254679098, guid: 3dbe255b79ef8384cb13cf4f5f547572,
         type: 3}
@@ -3346,6 +3346,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 664218397}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1866953373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 263840334539487350, guid: b8029265d61e59e4fbec1d495650d655,
+    type: 3}
+  m_PrefabInstance: {fileID: 664218397}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866953372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da132761a4b53f45ae1cb001b482a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1931313145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3977,6 +3989,11 @@ PrefabInstance:
       propertyPath: _loadData
       value: 
       objectReference: {fileID: 997649541}
+    - target: {fileID: 775043633746573670, guid: 909953fc537c28c4b927bfa754b41775,
+        type: 3}
+      propertyPath: depthManager
+      value: 
+      objectReference: {fileID: 1866953373}
     - target: {fileID: 775043633746573673, guid: 909953fc537c28c4b927bfa754b41775,
         type: 3}
       propertyPath: m_LocalPosition.x

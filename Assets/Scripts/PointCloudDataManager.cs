@@ -48,7 +48,7 @@ public class PointCloudDataManager : MonoBehaviour
 				SaveTextureAsPNG(depthManager._Texture, GetHash(10));
 			//capture
 			if(Input.GetKeyDown("space") && doNotSetTexture != true)
-				captureData(_debugText);
+				captureData(LoadPNG(Application.dataPath + "/" + lastPngSaved + ".png"));
 		}
     }
 
@@ -67,8 +67,11 @@ public class PointCloudDataManager : MonoBehaviour
 		//save the texture as a png
 		SaveTextureAsPNG(depthManager._Texture, GetHash(10));
 
+		//load the png
+		worldMan._participantPointCloud = LoadPNG(Application.dataPath + "/" + lastPngSaved + ".png");
+
 		//store it temporarily in a public variable 
-		worldMan._participantPointCloud = depthManager._Texture;
+		// worldMan._participantPointCloud = depthManager._Texture;
 	}
 
 	//SAVE DEPTH AS PNG
