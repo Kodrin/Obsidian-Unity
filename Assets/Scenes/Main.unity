@@ -892,7 +892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 560, y: 0}
+  m_AnchoredPosition: {x: 601, y: 0}
   m_SizeDelta: {x: 1050, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &424893319
@@ -1034,7 +1034,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424893317}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: eda8220ccc878064eb743d07c20f1435, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 12499d8342f88d04c9254777f9645f05, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1266,7 +1266,7 @@ PrefabInstance:
     - target: {fileID: 1556170007771205332, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -560
+      value: -601
       objectReference: {fileID: 0}
     - target: {fileID: 1556170007771205332, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
@@ -1297,7 +1297,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 63b767984dc88d048a63559918282895,
+      objectReference: {fileID: 32900000, guid: d1716dd8a2342da4fa8c3ca3106e2920,
         type: 3}
     - target: {fileID: 1556170007771205329, guid: cda79bf2655dd9645b7e2f7b95853e23,
         type: 3}
@@ -3193,7 +3193,7 @@ MonoBehaviour:
   _wallProjectionRef: {fileID: 935226462}
   _idle: {fileID: 32900000, guid: 8c2e769bb78afed439d9d559befaba32, type: 3}
   _initializing: {fileID: 32900000, guid: f428946c5d0b7cd47b48205278377c68, type: 3}
-  _putYourHandsUp: {fileID: 32900000, guid: ec11bb7850c273d44b66f2190dea9a17, type: 3}
+  _putYourHandsUp: {fileID: 32900000, guid: 08c8af7221ee6d04abc394b73e446b01, type: 3}
   _otherScenes: {fileID: 32900000, guid: 08c8af7221ee6d04abc394b73e446b01, type: 3}
   rawImage: {fileID: 1744037144}
   videoPlayer: {fileID: 1744037145}
