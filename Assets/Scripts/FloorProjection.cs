@@ -8,12 +8,14 @@ public class FloorProjection : MonoBehaviour
 {
 	[Header("References")]
 	public GameObject _wallProjectionRef; // reference to the first projection
+    public GameObject _obituaryProjectionRef; // references to the obituary object
 
     [Header("Clips")]
     //list of video clips
     public VideoClip _idle;
     public VideoClip _initializing;
     public VideoClip _putYourHandsUp;
+    public VideoClip _youWillBeRemembered;
     public VideoClip _otherScenes;
 
     [Header("Video References")]
@@ -29,7 +31,10 @@ public class FloorProjection : MonoBehaviour
     void Update()
     {
     	//if the wall projection is not active play the loop
-    	if(_wallProjectionRef.activeSelf == false){
+        if(_obituaryProjectionRef.activeSelf == true){
+            videoPlayer.clip = _youWillBeRemembered;
+            videoPlayer.isLooping = true;
+        } else if(_wallProjectionRef.activeSelf == false){
 	    	//switch the video
 			videoPlayer.clip = _otherScenes;
 			videoPlayer.isLooping = true;

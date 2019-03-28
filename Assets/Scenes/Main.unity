@@ -3191,9 +3191,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wallProjectionRef: {fileID: 935226462}
+  _obituaryProjectionRef: {fileID: 1096682175}
   _idle: {fileID: 32900000, guid: 8c2e769bb78afed439d9d559befaba32, type: 3}
   _initializing: {fileID: 32900000, guid: f428946c5d0b7cd47b48205278377c68, type: 3}
   _putYourHandsUp: {fileID: 32900000, guid: 08c8af7221ee6d04abc394b73e446b01, type: 3}
+  _youWillBeRemembered: {fileID: 32900000, guid: ec11bb7850c273d44b66f2190dea9a17,
+    type: 3}
   _otherScenes: {fileID: 32900000, guid: 08c8af7221ee6d04abc394b73e446b01, type: 3}
   rawImage: {fileID: 1744037144}
   videoPlayer: {fileID: 1744037145}
